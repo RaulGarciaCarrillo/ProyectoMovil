@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@android:drawable/ic_lock_idle_lock"
+        android:title="Perfil"
+        android:id="@+id/navPerfil"
+        />
+
+    <item
+        android:icon="@android:drawable/star_big_on"
+        android:title="Favoritos"
+        android:id="@+id/navFavoritos"
+        />
+
+    <item
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="Cerrar sesion"
+        android:id="@+id/navCerrarSesion"
+        />
+</menu>
