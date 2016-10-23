@@ -1,3 +1,49 @@
 <resources>
     <string name="app_name">ProyectoMovil</string>
+
+    <string name="nav_Profile">Profile</string>
+    <string name="nav_Favorites">Favorites</string>
+    <string name="nav_LogOut">Log Out</string>
+
+    <string name="add_Name">Name of Local</string>
+    <string name="add_Name_Hint">Hamburguer´s</string>
+    <string name="add_Photo">Photo</string>
+    <string name="add_Description">Description</string>
+    <string name="add_Description_Hint">The restaurant is...</string>
+
+    <string name="comments_Comment">In my opinion...</string>
+    <string name="comments_btnPost">Post</string>
+
+    <string name="detail_Comment">Comments</string>
+
+    <string name="login_User">User</string>
+    <string name="login_Password">Password</string>
+    <string name="login_btnLogin">Log In</string>
+    <string name="login_or">Or</string>
+    <string name="login_btnFacebook">Log In with Facebook</string>
+    <string name="login_btnForgotPassword">Forgot Password?</string>
+    <string name="login_btnRegister">Register</string>
+    
+    <string name="profile_ProfilePicture">Profile Picture</string>
+    <string name="profile_UserName">User Name</string>
+    <string name="profile_UserName_Example">Kalen</string>
+    <string name="profile_Email">E-mail</string>
+    <string name="profile_Email_Example">kalen@hotmail.com</string>
+    <string name="profile_Password">Password</string>
+    <string name="profile_Password_Example">12</string>
+    <string name="profile_Languaje">Languaje</string>
+    <string-array name="profile_Languajes">
+        <item>English</item>
+        <item>Español</item>
+    </string-array>
+    <string name="profile_btnEdit">Edit</string>
+
+    <string name="register_User">User Name</string>
+    <string name="register_Email">E-mail</string>
+    <string name="register_Password">Password</string>
+    <string name="register_ConfirmPassword">Confirm Password</string>
+    <string name="register_ProfilePicture">Profile Picture</string>
+    <string name="register_btnCancel">Cancel</string>
+    <string name="register_btnSignIn">Sign In</string>
+
 </resources>

@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile picture:"
+        android:text="@string/profile_ProfilePicture"
         android:id="@+id/textView6"
         android:textSize="20dp" />
 
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/profile_UserName"
             android:id="@+id/textView4"
             android:textSize="18dp" />
 
@@ -46,7 +46,7 @@
             android:ems="10"
             android:id="@+id/editText3"
             android:layout_weight="1"
-            android:hint="Kalen1008" />
+            android:hint="@string/profile_UserName_Example" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail"
+            android:text="@string/profile_Email"
             android:id="@+id/textView5"
             android:textSize="18dp" />
 
@@ -68,7 +68,7 @@
             android:ems="10"
             android:id="@+id/editText4"
             android:layout_weight="1"
-            android:hint="kalen1008@gmail.com" />
+            android:hint="@string/profile_Email_Example" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="@string/profile_Password"
             android:id="@+id/textView7"
             android:textSize="18dp" />
 
@@ -90,14 +90,34 @@
             android:ems="10"
             android:id="@+id/editText5"
             android:layout_weight="1"
-            android:text="123456789" />
+            android:text="@string/profile_Password_Example" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/profile_Languaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_weight="1"
+            android:entries="@array/profile_Languajes" />
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="@string/profile_btnEdit"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal" />
 

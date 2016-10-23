@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoMovil</string>
+
+    <string name="nav_Profile">Perfil</string>
+    <string name="nav_Favorites">Favoritos</string>
+    <string name="nav_LogOut">Cerrar Sesión</string>
+
+    <string name="add_Name">Nombre del Puesto</string>
+    <string name="add_Name_Hint">Tacos "Juan"</string>
+    <string name="add_Photo">Foto</string>
+    <string name="add_Description">Descripción</string>
+    <string name="add_Description_Hint">El restaurante es...</string>
+
+    <string name="comments_Comment">Yo pienso que...</string>
+    <string name="comments_btnPost">Publicar</string>
+
+    <string name="detail_Comment">Comentarios</string>
+
+    <string name="login_User">Usuario</string>
+    <string name="login_Password">Contraseña</string>
+    <string name="login_btnLogin">Inicia Sesión</string>
+    <string name="login_or">O</string>
+    <string name="login_Facebook">Conectate con Facebook</string>
+    <string name="login_ForgotPassword">¿Olvidaste tu contraseña?</string>
+    <string name="loging_Register">Registrate</string>
+
+    <string name="profile_ProfilePicture">Foto de Perfil</string>
+    <string name="profile_UserName">Usuario</string>
+    <string name="profile_UserName_Example">Kalen</string>
+    <string name="profile_Email">Correo</string>
+    <string name="profile_Email_Example">kalen@hotmail.com</string>
+    <string name="profile_Password">Contraseña</string>
+    <string name="profile_Password_Example">12</string>
+    <string name="profile_Languaje">Lenguaje</string>
+    <string-array name="profile_Languajes">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+    <string name="profile_btnEdit">Editar</string>
+
+    <string name="register_User">Usuario</string>
+    <string name="register_Email">Correo</string>
+    <string name="register_Password">Contraseña</string>
+    <string name="register_ConfirmPassword">Confirmar Contraseña</string>
+    <string name="register_ProfilePicture">Foto de Perfil</string>
+    <string name="register_btnCancel">Cancelar</string>
+    <string name="register_btnSignIn">Registrarse</string>
+
+</resources>

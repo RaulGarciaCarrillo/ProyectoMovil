@@ -46,7 +46,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu"
+        android:text="@string/detail_Comment"
         android:id="@+id/txtMenu"
         android:layout_below="@+id/txtDescripcionPuesto"
         android:textAlignment="center" />

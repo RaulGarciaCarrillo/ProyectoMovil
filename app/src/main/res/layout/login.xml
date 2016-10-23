@@ -19,7 +19,7 @@
         android:id="@+id/editUser"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:hint="User" />
+        android:hint="@string/login_User" />
 
     <EditText
         android:layout_width="match_parent"
@@ -27,13 +27,13 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editPassword"
-        android:hint="Password"
+        android:hint="@string/login_Password"
         android:layout_below="@+id/editUser" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log In"
+        android:text="@string/login_btnLogin"
         android:id="@+id/btnLogin"
         android:layout_below="@+id/editPassword" />
 
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="or"
+        android:text="@string/login_or"
         android:id="@+id/txtOr"
         android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
@@ -50,7 +50,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log In with Facebook"
+        android:text="@string/login_btnFacebook"
         android:id="@+id/btnFacebook"
         android:layout_below="@+id/txtOr"
         android:background="#2b42c7"
@@ -66,14 +66,14 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Forgot Password?"
+            android:text="@string/login_btnForgotPassword"
             android:id="@+id/button2"
             android:layout_weight="2" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Registrer"
+            android:text="@string/login_btnRegister"
             android:id="@+id/button"
             android:height="2dp"
             android:layout_weight="2" />
