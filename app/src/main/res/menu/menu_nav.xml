@@ -3,19 +3,19 @@
 
     <item
         android:icon="@android:drawable/ic_lock_idle_lock"
-        android:title="Perfil"
+        android:title="@string/nav_Profile"
         android:id="@+id/navPerfil"
         />
 
     <item
         android:icon="@android:drawable/star_big_on"
-        android:title="Favoritos"
+        android:title="@string/nav_Favorites"
         android:id="@+id/navFavoritos"
         />
 
     <item
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
-        android:title="Cerrar sesion"
+        android:title="@string/nav_LogOut"
         android:id="@+id/navCerrarSesion"
         />
 </menu>

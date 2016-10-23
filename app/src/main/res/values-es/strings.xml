@@ -21,9 +21,9 @@
     <string name="login_Password">Contraseña</string>
     <string name="login_btnLogin">Inicia Sesión</string>
     <string name="login_or">O</string>
-    <string name="login_Facebook">Conectate con Facebook</string>
-    <string name="login_ForgotPassword">¿Olvidaste tu contraseña?</string>
-    <string name="loging_Register">Registrate</string>
+    <string name="login_btnFacebook">Conectate con Facebook</string>
+    <string name="login_btnForgotPassword">¿Olvidaste tu contraseña?</string>
+    <string name="login_btnRegister">Registrate</string>
 
     <string name="profile_ProfilePicture">Foto de Perfil</string>
     <string name="profile_UserName">Usuario</string>

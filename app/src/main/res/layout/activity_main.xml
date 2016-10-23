@@ -5,9 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     tools:context="com.lmad.proyectomovil.MainActivity">
 
-    <!-- Definimos lo que va a ir dentro de nuestro navigation drawer -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_container">
+    </FrameLayout>
+
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
