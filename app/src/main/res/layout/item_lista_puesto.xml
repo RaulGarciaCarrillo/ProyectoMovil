@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +8,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/imageView11"
+            android:id="@+id/imgStandPicture"
             android:src="@mipmap/ic_launcher"
             android:layout_weight="1" />
 
@@ -21,10 +17,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Tacos &quot;Chuy&quot;"
-            android:id="@+id/textView11"
+            android:id="@+id/tvStandName"
             android:layout_weight="6"
             android:layout_gravity="center" />
-
-    </LinearLayout>
 
 </LinearLayout>

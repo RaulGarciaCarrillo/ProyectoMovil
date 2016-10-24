@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
@@ -8,7 +9,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/imageView12"
+            android:id="@+id/imgFavoite_Stand"
             android:src="@mipmap/ic_launcher"
             android:layout_weight="1" />
 
@@ -17,16 +18,16 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Tacos &quot;Chuy&quot;"
-            android:id="@+id/textView12"
+            android:id="@+id/tvFavorite_Name"
             android:layout_weight="4"
             android:layout_gravity="center" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/imageButton"
-            android:layout_weight="1"
-            android:src="@android:mipmap/sym_def_app_icon" />
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            android:id="@+id/imgFavorite"
+            android:layout_weight="1" />
 
 </LinearLayout>
 

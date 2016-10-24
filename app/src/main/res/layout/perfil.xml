@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_ProfilePicture"
-        android:id="@+id/textView6"
+        android:id="@+id/tvProfilePicture"
         android:textSize="20dp" />
 
     <LinearLayout
@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="217dp"
             android:layout_height="match_parent"
-            android:id="@+id/imageView2"
+            android:id="@+id/imgProfilePicture"
             android:src="@mipmap/ic_launcher"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
@@ -36,15 +36,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_UserName"
-            android:id="@+id/textView4"
+            android:id="@+id/tvProfileUser"
             android:textSize="18dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/editProfileUser"
             android:layout_weight="1"
             android:hint="@string/profile_UserName_Example" />
     </LinearLayout>
@@ -58,15 +58,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_Email"
-            android:id="@+id/textView5"
+            android:id="@+id/tvProfileEmail"
             android:textSize="18dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/editProfileEmail"
             android:layout_weight="1"
             android:hint="@string/profile_Email_Example" />
     </LinearLayout>
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_Password"
-            android:id="@+id/textView7"
+            android:id="@+id/tvProfilePassword"
             android:textSize="18dp" />
 
         <EditText
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText5"
+            android:id="@+id/editProfilePassword"
             android:layout_weight="1"
             android:text="@string/profile_Password_Example" />
 
@@ -103,13 +103,13 @@
             android:text="@string/profile_Languaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView13"
+            android:id="@+id/tvProfileLanguaje"
             android:textSize="18dp" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerLanguaje"
             android:layout_weight="1"
             android:entries="@array/profile_Languajes" />
     </LinearLayout>
@@ -118,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_btnEdit"
-        android:id="@+id/button"
+        android:id="@+id/btnProfileEdit"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
