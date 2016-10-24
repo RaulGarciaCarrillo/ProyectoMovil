@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">ProyectoMovil</string>
 
+    <string name="nav_Home">Home</string>
     <string name="nav_Profile">Profile</string>
     <string name="nav_Favorites">Favorites</string>
     <string name="nav_LogOut">Log Out</string>
 
-    <string name="add_Name">Name of Local</string>
+    <string name="add_Name">Name of Stand</string>
     <string name="add_Name_Hint">Hamburguer´s</string>
     <string name="add_Photo">Photo</string>
     <string name="add_Description">Description</string>

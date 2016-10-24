@@ -17,7 +17,7 @@ public class FragmentComentarios extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.comentarios, container, false);
+        View rootView = inflater.inflate(R.layout.item_lista_comentarios, container, false);
         return rootView;
     }
 }

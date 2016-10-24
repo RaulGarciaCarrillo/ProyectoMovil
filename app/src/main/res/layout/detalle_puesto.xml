@@ -3,35 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.lmad.proyectomovil.MainActivity">
+    tools:context="com.lmad.proyectomovil.MainActivity"
+    android:padding="8dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Tacos Roman"
-        android:id="@+id/txtNombrePuesto"
+        android:id="@+id/tvNameStand"
         android:textAlignment="center" />
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imgPuesto"
+        android:id="@+id/imgStand"
         android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/txtNombrePuesto"
+        android:layout_below="@+id/tvNameStand"
         android:layout_centerHorizontal="true"
-        android:contentDescription="Puesto de los tacos roman" />
+        android:contentDescription="Puesto de los tacos roman"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imgCorazon"
+        android:id="@+id/imgFavorite"
         android:src="@drawable/abc_ic_star_black_36dp"
-        android:layout_below="@+id/imgPuesto"
+        android:layout_below="@+id/imgStand"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -39,22 +36,43 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Este puesto vende unos tacos muy ricos y el servicio que ofrecen es muy bueno. Recomendado!"
-        android:id="@+id/txtDescripcionPuesto"
-        android:layout_below="@+id/imgCorazon" />
+        android:id="@+id/tvDescription"
+        android:layout_below="@+id/imgFavorite"
+        android:layout_marginBottom="12dp" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/detail_Comment"
-        android:id="@+id/txtMenu"
-        android:layout_below="@+id/txtDescripcionPuesto"
+        android:id="@+id/tvComment"
+        android:layout_below="@+id/tvDescription"
         android:textAlignment="center" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/txtMenu" />
+        android:id="@+id/lstComennts"
+        android:layout_below="@+id/tvComment" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/editComment"
+        android:inputType="textMultiLine"
+        android:hint="@string/comments_Comment"
+        android:layout_below="@+id/lstComennts"
+        android:gravity="top"
+        android:background="@color/button_material_light"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comments_btnPost"
+        android:id="@+id/btnPost"
+        android:textAlignment="center"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_below="@+id/editComment"
+        android:layout_alignStart="@+id/imgStand" />
 
 </RelativeLayout>

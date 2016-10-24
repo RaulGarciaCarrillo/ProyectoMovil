@@ -19,7 +19,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView2"
+                android:id="@+id/imgTacos"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Tacos"
-                android:id="@+id/textView"
+                android:id="@+id/tvTacos"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -41,7 +41,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView3"
+                android:id="@+id/img2"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Tostadas"
-                android:id="@+id/textView2"
+                android:id="@+id/tv2"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -63,7 +63,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView4"
+                android:id="@+id/img3"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pescados"
-                android:id="@+id/textView3"
+                android:id="@+id/tv3"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
@@ -93,7 +93,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView5"
+                android:id="@+id/img4"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Ensaladas"
-                android:id="@+id/textView4"
+                android:id="@+id/tv4"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -115,7 +115,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView6"
+                android:id="@+id/img5"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Nieve"
-                android:id="@+id/textView5"
+                android:id="@+id/tv5"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -137,7 +137,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView7"
+                android:id="@+id/img6"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Guisos"
-                android:id="@+id/textView6"
+                android:id="@+id/tv6"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
@@ -167,7 +167,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView8"
+                android:id="@+id/img7"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Alcohol"
-                android:id="@+id/textView7"
+                android:id="@+id/tv7"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -189,7 +189,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView9"
+                android:id="@+id/img8"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Hotdogs"
-                android:id="@+id/textView8"
+                android:id="@+id/tv8"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -211,7 +211,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView10"
+                android:id="@+id/img9"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -220,7 +220,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Otros"
-                android:id="@+id/textView9"
+                android:id="@+id/tv9"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>

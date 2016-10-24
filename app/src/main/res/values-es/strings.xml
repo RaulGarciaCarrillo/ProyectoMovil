@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">ProyectoMovil</string>
 
+    <string name="nav_Home">Inicio</string>
     <string name="nav_Profile">Perfil</string>
     <string name="nav_Favorites">Favoritos</string>
     <string name="nav_LogOut">Cerrar Sesión</string>
@@ -22,8 +23,8 @@
     <string name="login_btnLogin">Inicia Sesión</string>
     <string name="login_or">O</string>
     <string name="login_btnFacebook">Conectate con Facebook</string>
-    <string name="login_btnForgotPassword">¿Olvidaste tu contraseña?</string>
-    <string name="login_btnRegister">Registrate</string>
+    <string name="login_btnForgotPassword">Olvidé mi contraseña</string>
+    <string name="login_btnRegister">Regístrate</string>
 
     <string name="profile_ProfilePicture">Foto de Perfil</string>
     <string name="profile_UserName">Usuario</string>

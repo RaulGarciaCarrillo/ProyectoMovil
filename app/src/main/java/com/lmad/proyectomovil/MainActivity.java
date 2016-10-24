@@ -17,9 +17,10 @@ import com.lmad.proyectomovil.Fragments.FragmentLogin;
 import com.lmad.proyectomovil.Fragments.FragmentMenuPrincipal;
 import com.lmad.proyectomovil.Fragments.FragmentPerfil;
 
-public class MainActivity extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
+public class MainActivity extends AppCompatActivity implements DrawerLocker{
+
+    public DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id =item.getItemId();
-                if (id==R.id.navPerfil){
+                if (id==R.id.navInicio){
+                    changeFragment(new FragmentMenuPrincipal(),"inicio");
+                } else if (id==R.id.navPerfil){
                     changeFragment(new FragmentPerfil(),"perfil");
                 } else if(id==R.id.navFavoritos){
                     changeFragment(new FragmentListaFavoritos(),"favoritos");
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment currentFragment = fm.findFragmentByTag(tag);
 
         if (currentFragment != null && currentFragment.isVisible()){
-            Toast.makeText(this, "¡Ya está abierto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Ya está abierto!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -64,5 +67,13 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
 
         ft.commit();//cerrar conexión
+    }
+
+    @Override
+    public void setDrawerEnable(boolean enabled) {
+        int lockMode = enabled ? DrawerLayout.LOCK_MODE_UNLOCKED:
+                                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+        drawerLayout.setDrawerLockMode(lockMode);
+        //toogle.setDrawerI
     }
 }

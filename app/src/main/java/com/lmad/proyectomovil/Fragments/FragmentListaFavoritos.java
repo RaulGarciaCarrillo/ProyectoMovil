@@ -17,7 +17,7 @@ public class FragmentListaFavoritos extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.item_lista_favoritos, container, false);
+        View rootView = inflater.inflate(R.layout.lista_favoritos, container, false);
         return rootView;
     }
 }

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <ImageView
         android:layout_width="150dp"
@@ -59,24 +59,23 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnFacebook"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="8dp">
 
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_btnForgotPassword"
-            android:id="@+id/button2"
-            android:layout_weight="2" />
+            android:id="@+id/btnForgotPass"
+            android:layout_weight="0.6"
+            android:text="@string/login_btnForgotPassword" />
 
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_btnRegister"
-            android:id="@+id/button"
-            android:height="2dp"
-            android:layout_weight="2" />
+            android:id="@+id/btnRegister"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </RelativeLayout>
