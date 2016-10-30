@@ -19,7 +19,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTacos"
+                android:id="@+id/imgTipoC1"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -41,7 +41,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img2"
+                android:id="@+id/imgTipoC2"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -63,7 +63,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img3"
+                android:id="@+id/imgTipoC3"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -93,7 +93,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img4"
+                android:id="@+id/imgTipoC4"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -115,7 +115,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img5"
+                android:id="@+id/imgTipoC5"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -137,7 +137,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img6"
+                android:id="@+id/imgTipoC6"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -167,7 +167,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img7"
+                android:id="@+id/imgTipoC7"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -189,7 +189,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img8"
+                android:id="@+id/imgTipoC8"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
@@ -211,7 +211,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/img9"
+                android:id="@+id/imgTipoC9"
                 android:src="@android:mipmap/sym_def_app_icon"
                 android:layout_weight="1" />
 
