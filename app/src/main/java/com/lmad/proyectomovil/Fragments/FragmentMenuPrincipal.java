@@ -31,7 +31,17 @@ import java.util.List;
  */
 
 public class FragmentMenuPrincipal extends Fragment {
-    ImageView tvTacos;
+
+    ImageView imgBuffet;
+    ImageView imgChina;
+    ImageView imgHamburguesa;
+    ImageView imgHotdog;
+    ImageView imgPizza;
+    ImageView imgSnack;
+    ImageView imgTacos;
+    ImageView imgOtros;
+
+
 
     @Nullable
     @Override
@@ -41,18 +51,70 @@ public class FragmentMenuPrincipal extends Fragment {
 
         ((DrawerLocker)getActivity()).setDrawerEnable(true);
 
-        tvTacos = (ImageView) rootView.findViewById(R.id.imgTipoC1);
+        imgBuffet = (ImageView) rootView.findViewById(R.id.imgBuffet);
+        imgChina = (ImageView) rootView.findViewById(R.id.imgChina);
+        imgHamburguesa = (ImageView) rootView.findViewById(R.id.imgHamburguesa);
+        imgHotdog = (ImageView) rootView.findViewById(R.id.imgHotdog);
+        imgPizza = (ImageView) rootView.findViewById(R.id.imgPizza);
+        imgSnack = (ImageView) rootView.findViewById(R.id.imgSnack);
+        imgTacos = (ImageView) rootView.findViewById(R.id.imgTacos);
+        imgOtros = (ImageView) rootView.findViewById(R.id.imgOtros);
 
-        //dar clic en Tacos
-        tvTacos.setOnClickListener(new View.OnClickListener() {
+        imgBuffet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeFragment(new FragmentListaPuesto(),"detalle");
             }
         });
 
+        imgChina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
 
+        imgHamburguesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
 
+        imgHotdog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
+
+        imgPizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
+
+        imgSnack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
+
+        imgTacos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
+
+        imgOtros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new FragmentListaPuesto(),"detalle");
+            }
+        });
 
         return rootView;
     }
