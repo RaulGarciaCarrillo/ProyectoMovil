@@ -25,7 +25,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC7"
+                android:id="@+id/imgBuffet"
                 android:src="@mipmap/ic_buffet"
                 android:layout_weight="1" />
 
@@ -47,7 +47,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC8"
+                android:id="@+id/imgChina"
                 android:src="@mipmap/ic_china"
                 android:layout_weight="1" />
 
@@ -69,7 +69,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC9"
+                android:id="@+id/imgHamburguesa"
                 android:src="@mipmap/ic_hamburguesa"
                 android:layout_weight="1" />
 
@@ -103,7 +103,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC4"
+                android:id="@+id/imgHotdog"
                 android:src="@mipmap/ic_hotdog"
                 android:layout_weight="1" />
 
@@ -125,7 +125,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC5"
+                android:id="@+id/imgPizza"
                 android:src="@mipmap/ic_pizza"
                 android:layout_weight="1" />
 
@@ -147,7 +147,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC6"
+                android:id="@+id/imgSnack"
                 android:src="@mipmap/ic_snack"
                 android:layout_weight="1" />
 
@@ -181,7 +181,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC1"
+                android:id="@+id/imgTacos"
                 android:src="@mipmap/ic_taco"
                 android:layout_weight="1" />
 
@@ -203,7 +203,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgTipoC2"
+                android:id="@+id/imgOtros"
                 android:src="@mipmap/ic_otros"
                 android:layout_weight="1" />
 
