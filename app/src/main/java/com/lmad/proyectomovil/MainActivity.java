@@ -7,9 +7,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+
+import android.support.v7.app.ActionBarDrawerToggle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.lmad.proyectomovil.Fragments.FragmentListaFavoritos;
@@ -22,12 +27,23 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
 
     public DrawerLayout drawerLayout;
 
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+
+    NavigationView navigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout =(DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_viewer);
+
+        //
+
+        navigationView = (NavigationView) findViewById(R.id.nav_viewer);
+
 
         changeFragment(new FragmentMenuPrincipal(),"menu");
 
@@ -57,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
         Fragment currentFragment = fm.findFragmentByTag(tag);
 
         if (currentFragment != null && currentFragment.isVisible()){
-            Toast.makeText(this, "¡Ya está abierto!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString((R.string.toast_Fragment)), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -74,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
         int lockMode = enabled ? DrawerLayout.LOCK_MODE_UNLOCKED:
                                 DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
         drawerLayout.setDrawerLockMode(lockMode);
-        //toogle.setDrawerI
+    }
+
+    @Override
+    public void RefreshNav() {
+        invalidateOptionsMenu();
+        Toast.makeText(this, "Refrescar", Toast.LENGTH_SHORT).show();
     }
 }

@@ -48,4 +48,7 @@
     <string name="register_btnCancel">Cancelar</string>
     <string name="register_btnSignIn">Registrarse</string>
 
+    <!--Toast-->
+    <string name="toast_Fragment">¡Ya está abierto!</string>
+
 </resources>
