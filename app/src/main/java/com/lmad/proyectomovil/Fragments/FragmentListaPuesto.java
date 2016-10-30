@@ -26,6 +26,7 @@ import java.util.List;
 
 public class FragmentListaPuesto extends Fragment {
 
+    Integer idTipoComida;
     ListView lstPuestos;
 
     @Nullable
@@ -35,7 +36,7 @@ public class FragmentListaPuesto extends Fragment {
         final View rootView = inflater.inflate(R.layout.lista_puesto, container, false);
         lstPuestos = (ListView) rootView.findViewById(R.id.lstPuestos);
 
-        new Networking(rootView.getContext()).execute("cargarPuestos", new MyCallback() {
+        new Networking(rootView.getContext()).execute("cargarPuestos", idTipoComida, new MyCallback() {
             @Override
             public void onWorkFinish(Object data) {
                 final List<Puesto> puestoList = (List<Puesto>) data;
@@ -54,8 +55,10 @@ public class FragmentListaPuesto extends Fragment {
         lstPuestos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                lstPuestos.getAdapter().getItem(position);
-                changeFragment(new FragmentDetallePuesto(), "detalle");
+                Puesto puesto = (Puesto) lstPuestos.getAdapter().getItem(position);
+                FragmentDetallePuesto fragmentDetallePuesto = new FragmentDetallePuesto();
+                fragmentDetallePuesto.setPuesto(puesto);
+                changeFragment(fragmentDetallePuesto, "detallePuesto");
             }
         });
 
@@ -71,5 +74,9 @@ public class FragmentListaPuesto extends Fragment {
         ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
 
         ft.commit();//cerrar conexión
+    }
+
+    public void setIdTipoComida(Integer idTipoComida) {
+        this.idTipoComida = idTipoComida;
     }
 }
