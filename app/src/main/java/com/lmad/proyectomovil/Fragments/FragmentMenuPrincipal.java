@@ -63,56 +63,72 @@ public class FragmentMenuPrincipal extends Fragment {
         imgBuffet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(2);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgChina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(3);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgHamburguesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(4);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgHotdog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(5);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgPizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(6);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(7);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgTacos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(8);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
         imgOtros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentListaPuesto(),"detalle");
+                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                fragmentListaPuesto.setIdTipoComida(9);
+                changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
 
