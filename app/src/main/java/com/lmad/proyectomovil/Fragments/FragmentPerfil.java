@@ -107,4 +107,10 @@ public class FragmentPerfil extends Fragment {
         ((DrawerLocker)getActivity()).RefreshNav();  //refrescar navigation drawer
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
+    }
+
 }
