@@ -42,6 +42,11 @@ public class FragmentMenuPrincipal extends Fragment {
     ImageView imgOtros;
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -176,5 +181,10 @@ public class FragmentMenuPrincipal extends Fragment {
         Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
+    }
 
 }

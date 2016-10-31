@@ -6,4 +6,5 @@ package com.lmad.proyectomovil;
 
 public interface DrawerLocker {
     public void setDrawerEnable(boolean enabled);
+    public void RefreshNav();
 }
