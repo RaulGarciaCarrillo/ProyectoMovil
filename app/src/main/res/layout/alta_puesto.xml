@@ -1,104 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="8dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:weightSum="1">
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:text="@string/add_Name"
+        tools:layout_conversion_absoluteX="125dp"
+        tools:layout_conversion_absoluteY="85dp"
+        tools:layout_conversion_absoluteWidth="134dp"
+        tools:layout_conversion_absoluteHeight="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textSize="20dp"
-            android:text="@string/add_Name"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal" />
+    <EditText
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:hint="@string/add_Name_Hint"
+        android:background="@color/button_material_light"
+        android:gravity="top|center"
+        tools:layout_conversion_absoluteX="24dp"
+        tools:layout_conversion_absoluteY="56dp"
+        tools:layout_conversion_absoluteWidth="336dp"
+        tools:layout_conversion_absoluteHeight="21dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:layout_below="@+id/textView"
-            android:layout_alignParentEnd="true"
-            android:hint="@string/add_Name_Hint"
-            android:background="@color/button_material_light"
-            android:layout_weight="0.11"
-            android:gravity="top|center"
-            android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="53dp"
+        android:layout_height="24dp"
+        android:id="@+id/textView2"
+        android:textSize="20dp"
+        android:text="@string/add_Photo"
+        tools:layout_conversion_absoluteX="165dp"
+        tools:layout_conversion_absoluteY="24dp"
+        tools:layout_conversion_absoluteWidth="53dp"
+        tools:layout_conversion_absoluteHeight="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:textSize="20dp"
-            android:text="@string/add_Photo"
-            android:layout_below="@+id/editText"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal" />
+    <ImageView
+        android:layout_width="214dp"
+        android:layout_height="212dp"
+        android:id="@+id/imageView"
+        android:src="@android:mipmap/sym_def_app_icon"
+        tools:layout_conversion_absoluteX="85dp"
+        tools:layout_conversion_absoluteY="117dp"
+        tools:layout_conversion_absoluteWidth="214dp"
+        tools:layout_conversion_absoluteHeight="212dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="174dp"
-            android:layout_weight="0.10"
-            android:background="@color/button_material_light">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:inputType="textMultiLine"
+        android:textSize="20dp"
+        android:text="@string/add_Description"
+        tools:layout_conversion_absoluteX="141dp"
+        tools:layout_conversion_absoluteY="338dp"
+        tools:layout_conversion_absoluteWidth="101dp"
+        tools:layout_conversion_absoluteHeight="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp" />
 
-            <ImageView
-                android:layout_width="214dp"
-                android:layout_height="212dp"
-                android:id="@+id/imageView"
-                android:src="@android:mipmap/sym_def_app_icon"
-                android:layout_below="@+id/textView2"
-                android:layout_alignStart="@+id/textView2"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.01" />
-        </LinearLayout>
+    <EditText
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:hint="@string/add_Description_Hint"
+        android:gravity="top"
+        android:background="@color/button_material_light"
+        tools:layout_conversion_absoluteX="24dp"
+        tools:layout_conversion_absoluteY="370dp"
+        tools:layout_conversion_absoluteWidth="336dp"
+        tools:layout_conversion_absoluteHeight="21dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:inputType="textMultiLine"
-            android:textSize="20dp"
-            android:text="@string/add_Description"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:backgroundTint="@android:color/holo_blue_light"
+        android:id="@+id/btnAddLocal"
+        tools:layout_conversion_absoluteX="304dp"
+        tools:layout_conversion_absoluteY="431dp"
+        tools:layout_conversion_absoluteWidth="56dp"
+        tools:layout_conversion_absoluteHeight="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:hint="@string/add_Description_Hint"
-            android:gravity="top"
-            android:background="@color/button_material_light"
-            android:layout_weight="0.80" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_input_add"
-            app:backgroundTint="@android:color/holo_blue_light"
-            android:id="@+id/btnAddLocal"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="bottom|end"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
