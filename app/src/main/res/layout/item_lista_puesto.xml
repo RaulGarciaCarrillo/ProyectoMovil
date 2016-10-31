@@ -25,14 +25,16 @@
                     android:text="Tacos &quot;Chuy&quot;"
                     android:id="@+id/tvStandName"
                     android:layout_weight="6"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:paddingLeft="15dp" />
 
                 <TextView
                     android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvDescripcion"
-                    android:layout_weight="6" />
+                    android:layout_weight="6"
+                    android:paddingLeft="15dp" />
         </LinearLayout>
 
 </LinearLayout>
