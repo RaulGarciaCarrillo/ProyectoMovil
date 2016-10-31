@@ -68,4 +68,10 @@ public class FragmentLogin extends Fragment {
 
         ft.commit();//cerrar conexión
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
+    }
 }
