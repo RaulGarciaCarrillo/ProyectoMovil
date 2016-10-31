@@ -42,7 +42,11 @@ public class FragmentMenuPrincipal extends Fragment {
     ImageView imgOtros;
 
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override

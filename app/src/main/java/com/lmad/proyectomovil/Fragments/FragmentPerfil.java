@@ -28,11 +28,16 @@ import java.util.Locale;
 public class FragmentPerfil extends Fragment {
     Spinner spinnerLenguaje;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.perfil, container, false);
-
         getActivity().setTitle("Profile");
 
         spinnerLenguaje = (Spinner) rootView.findViewById(R.id.spinnerLanguaje);

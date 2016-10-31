@@ -23,6 +23,12 @@ import com.lmad.proyectomovil.R;
 public class FragmentLogin extends Fragment {
     Button btnLogIn,btnRegister;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
