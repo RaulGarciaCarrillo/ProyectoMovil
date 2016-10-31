@@ -38,33 +38,39 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        drawerLayout =(DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         //
 
         navigationView = (NavigationView) findViewById(R.id.nav_viewer);
 
 
-        changeFragment(new FragmentMenuPrincipal(),"menu");
+        android.app.Fragment existingFragment = getFragmentManager().findFragmentById(android.R.id.content);
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id =item.getItemId();
-                if (id==R.id.navInicio){
-                    changeFragment(new FragmentMenuPrincipal(),"inicio");
-                } else if (id==R.id.navPerfil){
-                    changeFragment(new FragmentPerfil(),"perfil");
-                } else if(id==R.id.navFavoritos){
-                    changeFragment(new FragmentListaFavoritos(),"favoritos");
-                } else if(id==R.id.navCerrarSesion){
-                    changeFragment(new FragmentLogin(),"login");
+        if (existingFragment == null) {
+
+            changeFragment(new FragmentLogin(), "login");
+        }
+
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    int id = item.getItemId();
+                    if (id == R.id.navInicio) {
+                        changeFragment(new FragmentMenuPrincipal(), "inicio");
+                    } else if (id == R.id.navPerfil) {
+                        changeFragment(new FragmentPerfil(), "perfil");
+                    } else if (id == R.id.navFavoritos) {
+                        changeFragment(new FragmentListaFavoritos(), "favoritos");
+                    } else if (id == R.id.navCerrarSesion) {
+                        changeFragment(new FragmentLogin(), "login");
+                    }
+                    //cerrar el navigation
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    return false;
                 }
-                //cerrar el navigation
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return false;
-            }
-        });
+            });
+
     }
 
     private void changeFragment(Fragment fragment, String tag) {
@@ -77,12 +83,17 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
             return;
         }
 
-        FragmentTransaction ft= fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
 
-        //ft.addToBackStack(null); //no regresar al último fragmento
-        ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
+            FragmentTransaction ft = fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
 
-        ft.commit();//cerrar conexión
+            //ft.addToBackStack(null); //no regresar al último fragmento
+            ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
+
+            ft.commit();//cerrar conexión
+
+        }
+
     }
 
     @Override
@@ -97,4 +108,6 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
         invalidateOptionsMenu();
         Toast.makeText(this, "Refrescar", Toast.LENGTH_SHORT).show();
     }
+
+
 }
