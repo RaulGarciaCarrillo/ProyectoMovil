@@ -258,7 +258,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
         }
     }
 
-    // Metodo que lee un String desde un InputStream (Convertimos el InputStream del servidor en un String)
+    // Metodo que lee un String desde un InputStream (Convertimos el InputStream del servidor en un String)a
     private String inputStreamToString(InputStream is) {
         String rLine = "";
         StringBuilder response = new StringBuilder();
