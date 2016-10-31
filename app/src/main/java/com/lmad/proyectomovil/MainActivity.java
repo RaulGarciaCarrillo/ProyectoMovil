@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
                     return false;
                 }
             });
-
     }
 
     private void changeFragment(Fragment fragment, String tag) {
