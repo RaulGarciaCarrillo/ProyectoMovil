@@ -134,11 +134,11 @@
         tools:layout_conversion_absoluteY="431dp"
         tools:layout_conversion_absoluteWidth="56dp"
         tools:layout_conversion_absoluteHeight="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" />
 
 
 </android.support.constraint.ConstraintLayout>
