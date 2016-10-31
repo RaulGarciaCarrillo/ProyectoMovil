@@ -9,6 +9,8 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,22 +34,23 @@ public class FragmentDetallePuesto extends Fragment{
 
     Puesto puesto;
 
-    TextView tvNameStand;
     ImageView imgStand;
     TextView tvDescription;
-
     ListView lstComennts;
+    Button btnPost;
+    EditText editComment;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
+        final View rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
 
-        tvNameStand = (TextView) rootView.findViewById(R.id.tvNameStand);
         imgStand = (ImageView) rootView.findViewById(R.id.imgStand);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
-
         lstComennts = (ListView) rootView.findViewById(R.id.lstComennts);
+        btnPost = (Button) rootView.findViewById(R.id.btnPost);
+        editComment = (EditText) rootView.findViewById(R.id.editComment);
 
         new Networking(rootView.getContext()).execute("cargarDetallePuesto", puesto,new MyCallback() {
             @Override
@@ -56,11 +59,10 @@ public class FragmentDetallePuesto extends Fragment{
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvNameStand.setText(puesto.getNombre());
                         Bitmap foto = decodeBase64(puesto.getFoto());
                         imgStand.setImageBitmap(foto);
                         tvDescription.setText(puesto.getDescripcion());
-
+                        getActivity().setTitle(puesto.getNombre());
 
                     }
                 });
@@ -83,8 +85,20 @@ public class FragmentDetallePuesto extends Fragment{
             }
         });
 
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 18, editComment.getText().toString());
+                editComment.setText("");
+            }
+        });
+
+
         return rootView;
     }
+
+
+
 
     public Puesto getPuesto() {
         return puesto;
@@ -106,5 +120,6 @@ public class FragmentDetallePuesto extends Fragment{
         byte[] decodedBytes = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
+
 }
 
