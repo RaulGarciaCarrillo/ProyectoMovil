@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,7 +19,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.ComentarioAdapter;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
@@ -37,6 +41,7 @@ public class FragmentDetallePuesto extends Fragment{
 
     Puesto puesto;
 
+    View rootView;
     ImageView imgStand;
     TextView tvDescription;
     ListView lstComennts;
@@ -45,11 +50,10 @@ public class FragmentDetallePuesto extends Fragment{
 
     ScrollView scrollPuesto;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
+        rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
 
         imgStand = (ImageView) rootView.findViewById(R.id.imgStand);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
@@ -75,36 +79,19 @@ public class FragmentDetallePuesto extends Fragment{
             }
         });
 
-        new Networking(rootView.getContext()).execute("cargarComentariosPuesto", puesto.getId(), new MyCallback() {
-            @Override
-            public void onWorkFinish(Object data) {
-                final List<Comentario> comentarioList = (List<Comentario>) data;
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (comentarioList.size() != 0) {
-                            final ComentarioAdapter comentarioAdapter = new ComentarioAdapter(comentarioList);
-                            lstComennts.setAdapter(comentarioAdapter);
-                            setListViewHeightBasedOnChildren(lstComennts);
-                        }
-                    }
-                });
-            }
-        });
+        ChargeList();
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 18, editComment.getText().toString());
                 editComment.setText("");
+                ChargeList();
             }
         });
 
         return rootView;
     }
-
-
-
 
     public Puesto getPuesto() {
         return puesto;
@@ -149,6 +136,27 @@ public class FragmentDetallePuesto extends Fragment{
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+
+    private void ChargeList (){
+        new Networking(rootView.getContext()).execute("cargarComentariosPuesto", puesto.getId(), new MyCallback() {
+            @Override
+            public void onWorkFinish(Object data) {
+                final List<Comentario> comentarioList = (List<Comentario>) data;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (comentarioList.size() != 0) {
+                            final ComentarioAdapter comentarioAdapter = new ComentarioAdapter(comentarioList);
+                            lstComennts.setAdapter(comentarioAdapter);
+                            setListViewHeightBasedOnChildren(lstComennts);
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
 }

@@ -11,6 +11,16 @@
     <string name="add_Photo">Photo</string>
     <string name="add_Description">Description</string>
     <string name="add_Description_Hint">The restaurant is...</string>
+    <string name="add_Type">Types of Food</string>
+    
+    <string name="Buffet">Buffet</string>
+    <string name="Chinese">Chinese</string>
+    <string name="Hamburgers">Hamburgers</string>
+    <string name="HotDogs">Hot-Dogs</string>
+    <string name="Pizza">Pizza</string>
+    <string name="Snack">Snack</string>
+    <string name="Tacos">Tacos</string>
+    <string name="Others">Others</string>
 
     <string name="comments_Comment">Write a comment...</string>
     <string name="comments_btnPost">Post</string>
