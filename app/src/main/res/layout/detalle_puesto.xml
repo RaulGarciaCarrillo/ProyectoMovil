@@ -3,13 +3,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.lmad.proyectomovil.MainActivity"
     android:padding="8dp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/scrollPuesto"
+        android:scrollbars="none">
 
         <RelativeLayout
         android:layout_width="match_parent"
@@ -21,15 +23,6 @@
                 android:text="Tacos Roman"
                 android:id="@+id/tvNameStand"
                 android:textAlignment="center" />
-
-            <ImageView
-                android:id="@+id/imgStand"
-                android:src="@mipmap/ic_launcher"
-                android:layout_below="@+id/tvNameStand"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="Puesto de los tacos roman"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -58,7 +51,7 @@
                 android:textAlignment="center" />
 
             <ListView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lstComennts"
                 android:layout_below="@+id/tvComment" />
@@ -82,6 +75,15 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/editComment"
                 android:layout_alignStart="@+id/imgStand" />
+
+            <ImageView
+                android:id="@+id/imgStand"
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="Puesto de los tacos roman"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvNameStand"
+                android:layout_centerHorizontal="true"
+                android:layout_height="150dp" />
 
 
         </RelativeLayout>

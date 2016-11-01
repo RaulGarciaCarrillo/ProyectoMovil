@@ -5,17 +5,17 @@
     android:padding="8dp">
 
     <ImageView
-            android:layout_height="60dp"
-            android:id="@+id/imgComment_Profile"
+        android:id="@+id/imgComment_Profile"
             android:src="@mipmap/ic_launcher"
-            android:layout_weight="1"
-            android:layout_width="60dp" />
+        android:layout_width="60dp"
+        android:scaleType="centerCrop"
+        android:layout_height="60dp" />
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="7">
+        android:paddingLeft="10dp">
 
         <TextView
             android:layout_width="match_parent"
