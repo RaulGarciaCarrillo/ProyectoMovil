@@ -13,7 +13,7 @@
     <string name="add_Description">Descripción</string>
     <string name="add_Description_Hint">El restaurante es...</string>
 
-    <string name="comments_Comment">Yo pienso que...</string>
+    <string name="comments_Comment">Escribe un comentario...</string>
     <string name="comments_btnPost">Publicar</string>
 
     <string name="detail_Comment">Comentarios</string>

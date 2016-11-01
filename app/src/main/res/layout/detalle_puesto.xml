@@ -57,17 +57,18 @@
                 android:layout_below="@+id/tvComment" />
 
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/editComment"
                 android:inputType="textMultiLine"
                 android:hint="@string/comments_Comment"
                 android:layout_below="@+id/lstComennts"
                 android:gravity="top"
-                android:background="@color/button_material_light"/>
+                android:background="@color/button_material_light"
+                android:padding="15dp" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/comments_btnPost"
                 android:id="@+id/btnPost"
