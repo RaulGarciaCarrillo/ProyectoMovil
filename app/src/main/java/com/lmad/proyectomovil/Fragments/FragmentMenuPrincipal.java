@@ -69,7 +69,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(2);
+                fragmentListaPuesto.setIdTipoComida(1);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -78,7 +78,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(3);
+                fragmentListaPuesto.setIdTipoComida(2);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -87,7 +87,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(4);
+                fragmentListaPuesto.setIdTipoComida(3);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -96,7 +96,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(5);
+                fragmentListaPuesto.setIdTipoComida(4);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -105,7 +105,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(6);
+                fragmentListaPuesto.setIdTipoComida(5);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -114,7 +114,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(7);
+                fragmentListaPuesto.setIdTipoComida(6);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
@@ -123,7 +123,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(8);
+                fragmentListaPuesto.setIdTipoComida(7);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });

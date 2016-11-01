@@ -43,7 +43,7 @@ public class FragmentDetallePuesto extends Fragment{
 
     View rootView;
     ImageView imgStand;
-    TextView tvDescription;
+    TextView tvDescription, tvNameStand;
     ListView lstComennts;
     Button btnPost;
     EditText editComment;
@@ -55,6 +55,7 @@ public class FragmentDetallePuesto extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
 
+        tvNameStand = (TextView) rootView.findViewById(R.id.tvNameStand);
         imgStand = (ImageView) rootView.findViewById(R.id.imgStand);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
         lstComennts = (ListView) rootView.findViewById(R.id.lstComennts);
@@ -69,6 +70,7 @@ public class FragmentDetallePuesto extends Fragment{
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        tvNameStand.setText(puesto.getNombre());
                         Bitmap foto = decodeBase64(puesto.getFoto());
                         imgStand.setImageBitmap(foto);
                         tvDescription.setText(puesto.getDescripcion());
@@ -84,7 +86,7 @@ public class FragmentDetallePuesto extends Fragment{
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 18, editComment.getText().toString());
+                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 2, editComment.getText().toString());
                 editComment.setText("");
                 ChargeList();
             }
