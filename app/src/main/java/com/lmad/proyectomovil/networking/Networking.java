@@ -89,6 +89,11 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
                 agregarComentario(idPuestoComentario, idUsuarioComentario, descripcionComentario);
                 break;
 
+            case "agregarUsuario":
+                Usuario usuarioAgregar = (Usuario) params[1];
+                agregarUsuario(usuarioAgregar);
+                break;
+
         }
         return null;
     }
