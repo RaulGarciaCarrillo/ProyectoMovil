@@ -35,6 +35,8 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     static final String SERVER_OBTENER_PUESTO = "http://www.multimediarts.com.mx/foodpoint/obtenerPuesto.php";
     static final String SERVER_LISTA_COMENTARIOS = "http://www.multimediarts.com.mx/foodpoint/listaComentarios.php";
     static final String SERVER_AGREGAR_COMENTARIO = "http://www.multimediarts.com.mx/foodpoint/agregarComentario.php";
+    static final String SERVER_AGREGAR_USUARIO = "http://www.multimediarts.com.mx/foodpoint/agregarUsuario.php";
+
     static final int TIMEOUT = 5000;
 
     Context m_context;
@@ -240,6 +242,31 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
 
         try {
             url = new URL(SERVER_AGREGAR_COMENTARIO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarUsuario(Usuario usuario) {
+        String postParams = "&apodo="+usuario.getApodo()+"&correo="+usuario.getCorreo()+"&contrasena="+usuario.getContrasenia()+"&foto="+usuario.getFoto();
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_AGREGAR_USUARIO);
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setDoInput(true);
