@@ -61,7 +61,11 @@
     <string name="toast_Fragment">Already open!</string>
     <string name="toast_contrasenia">Password not are equal</string>
     <string name="toast_faltan_campos">"Fill in missing fields "</string>
+    <!--Toast-->
+
     <!--Titles -->
+    <string name="fragmentAdd">Add Stand</string>
+    <string name="fragmentProfile">Profile</string>
 
 
 </resources>
