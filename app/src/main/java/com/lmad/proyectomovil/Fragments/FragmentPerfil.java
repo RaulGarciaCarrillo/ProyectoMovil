@@ -38,7 +38,7 @@ public class FragmentPerfil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.perfil, container, false);
-        getActivity().setTitle("Profile");
+        getActivity().setTitle(getResources().getString((R.string.fragmentProfile)));
 
         spinnerLenguaje = (Spinner) rootView.findViewById(R.id.spinnerLanguaje);
 

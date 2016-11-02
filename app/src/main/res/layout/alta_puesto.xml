@@ -240,7 +240,7 @@
                 android:layout_marginTop="8dp"/>
 
             <ImageView
-                android:layout_width="214dp"
+                android:layout_width="114dp"
                 android:layout_height="212dp"
                 android:id="@+id/imgPhotoStand"
                 android:src="@android:mipmap/sym_def_app_icon"
@@ -275,7 +275,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp" />
+                android:layout_marginTop="12dp" />
 
             <EditText
                 android:layout_width="336dp"
