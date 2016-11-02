@@ -61,5 +61,6 @@
     <!--Toast-->
     <string name="toast_Fragment">¡Ya está abierto!</string>
     <string name="toast_contrasenia">Las contraseñas no son iguales</string>
+    <string name="toast_faltan_campos">Faltan campos por llenar</string>
 
 </resources>

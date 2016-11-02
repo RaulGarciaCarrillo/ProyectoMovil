@@ -89,28 +89,37 @@ public class FragmentRegistro extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+
+
                 if(editPassword.getText().toString().equals(editConfirmPassword.getText().toString())) {
+                    if(editPassword.getText().toString().equals("") ||
+                            editConfirmPassword.getText().toString().equals("") ||
+                            editUser.getText().toString().equals("") ||
+                            editUserName.getText().toString().equals("")) {
+                        Usuario usuario = new Usuario();
+                        Bitmap foto = ((BitmapDrawable) imgRegisterPicture.getDrawable()).getBitmap();
+                        String fotoBase64 = encodeToBase64(foto);
+                        usuario.setFoto(fotoBase64);
+                        usuario.setApodo(editUserName.getText().toString());
+                        usuario.setContrasenia(editPassword.getText().toString());
+                        usuario.setCorreo(editUser.getText().toString());
 
-                    Usuario usuario = new Usuario();
-                    Bitmap foto = ((BitmapDrawable) imgRegisterPicture.getDrawable()).getBitmap();
-                    String fotoBase64 = encodeToBase64(foto);
-                    usuario.setFoto(fotoBase64);
-                    usuario.setApodo(editUserName.getText().toString());
-                    usuario.setContrasenia(editPassword.getText().toString());
-                    usuario.setCorreo(editUser.getText().toString());
+                        new Networking(v.getContext()).execute("agregarUsuario", usuario, new MyCallback() {
+                            @Override
+                            public void onWorkFinish(Object data) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
 
-                    new Networking(v.getContext()).execute("agregarUsuario", usuario, new MyCallback() {
-                        @Override
-                        public void onWorkFinish(Object data) {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                }
-                            });
-                        }
-                    });
-                    changeFragment(new FragmentMenuPrincipal(), "inicio");
+                                    }
+                                });
+                            }
+                        });
+                        changeFragment(new FragmentMenuPrincipal(), "inicio");
+                    }else{
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
+                    }
                 } else{
                     Toast.makeText(getContext(), getResources().getString(R.string.toast_contrasenia), Toast.LENGTH_SHORT).show();
                 }
