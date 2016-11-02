@@ -5,8 +5,8 @@
     android:padding="8dp">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:id="@+id/imgPhotoStand"
         android:src="@mipmap/ic_launcher"
         android:layout_centerHorizontal="true" />
@@ -18,8 +18,8 @@
         android:ems="10"
         android:id="@+id/editUser"
         android:layout_below="@+id/imgPhotoStand"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/login_User" />
+        android:hint="@string/login_User"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="match_parent"
@@ -28,7 +28,9 @@
         android:ems="10"
         android:id="@+id/editPassword"
         android:hint="@string/login_Password"
-        android:layout_below="@+id/editUser" />
+        android:layout_below="@+id/editUser"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif" />
 
     <Button
         android:layout_width="match_parent"
@@ -62,13 +64,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnFacebook"
         android:layout_marginTop="8dp">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnForgotPass"
-            android:layout_weight="0.6"
-            android:text="@string/login_btnForgotPassword" />
 
         <Button
             android:layout_width="match_parent"

@@ -12,10 +12,11 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/imgLogo"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 </LinearLayout>
