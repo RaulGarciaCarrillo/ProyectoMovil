@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +24,9 @@ import android.widget.Toast;
 
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.model.Puesto;
+import com.lmad.proyectomovil.networking.Networking;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Date;
@@ -40,11 +44,11 @@ public class FragmentAltaPuesto extends Fragment {
 
     Boolean checkedBuffet, checkedHamburger, checkedHotDog, checkedPizza, checkedChinese, checkedSnack, checkedTacos, checkedOthers;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.alta_puesto, container, false);
+        final View rootView = inflater.inflate(R.layout.alta_puesto, container, false);
+        getActivity().setTitle(getResources().getString((R.string.fragmentAdd)));
 
         puesto = new Puesto();
         editNameStand = (EditText) rootView.findViewById(R.id.editNameStand);
@@ -186,6 +190,9 @@ public class FragmentAltaPuesto extends Fragment {
             public void onClick(View v) {
                 puesto.setNombre(editNameStand.getText().toString());
                 puesto.setDescripcion(editDescriptionStand.getText().toString());
+                Bitmap foto = ((BitmapDrawable)imgPhotoStand.getDrawable()).getBitmap();
+                String fotoBase64 = encodeToBase64(foto);
+                puesto.setFoto(fotoBase64);
 
                 if ((checkedBuffet==false && checkedHamburger==false && checkedHotDog==false &&  checkedPizza==false
                         && checkedChinese==false &&  checkedSnack==false && checkedTacos==false &&  checkedOthers==false)
@@ -194,6 +201,25 @@ public class FragmentAltaPuesto extends Fragment {
                     return;
                 }
                 else {
+                    new Networking(rootView.getContext()).execute("agregarPuesto", puesto);
+
+                    if(checkedBuffet==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 1);
+                    if(checkedChinese==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 2);
+                    if(checkedHamburger==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 3);
+                    if(checkedHotDog==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 4);
+                    if(checkedPizza==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 5);
+                    if(checkedSnack==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 6);
+                    if(checkedTacos==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 7);
+                    if(checkedOthers==true)
+                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 8);
+
                     Toast.makeText(getContext(), "Puesto agregado exitosamente.", Toast.LENGTH_SHORT).show();
                     changeFragment(new FragmentMenuPrincipal(), "inicio");
                 }
@@ -207,27 +233,31 @@ public class FragmentAltaPuesto extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) { //cuando ya regresemos de la camara
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            // Leemos la imagen
-            // A nada de aqui le muevan. Lo unico que hago es que en dado caso de que se tomara una foto
-            // con la camara. Entonces guardo el thumbnail de la foto en nuestra carpeta privada
-            // de la memoria interna para posteriormente guardar ese path de la imagen en la base de datos
             try {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-
-                puesto.setFoto("picture_" + new Date().getTime() + ".jpg");
-                FileOutputStream fos = getContext().openFileOutput(puesto.getFoto(), Context.MODE_PRIVATE);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                fos.close();
-
                 imgPhotoStand.setImageBitmap(bitmap);
                 Toast.makeText(getContext(),"Foto guardada", Toast.LENGTH_SHORT).show();
 
             } catch(Exception ex) {
                 ex.printStackTrace();
-                puesto.setFoto("");
                 Toast.makeText(getContext(), "Problema al regresar de la cámara", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public static String encodeToBase64(Bitmap image)
+    {
+        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOS);
+        byte[] bytes = byteArrayOS.toByteArray();
+        String encode = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return encode;
+    }
+
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedBytes = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
     private void changeFragment(Fragment fragment, String tag) {
