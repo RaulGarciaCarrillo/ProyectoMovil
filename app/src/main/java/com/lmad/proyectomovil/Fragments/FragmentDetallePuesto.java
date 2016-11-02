@@ -70,7 +70,7 @@ public class FragmentDetallePuesto extends Fragment{
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvNameStand.setText(puesto.getNombre());
+                        //tvNameStand.setText(puesto.getNombre());
                         Bitmap foto = decodeBase64(puesto.getFoto());
                         imgStand.setImageBitmap(foto);
                         tvDescription.setText(puesto.getDescripcion());

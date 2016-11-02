@@ -17,11 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-            <ImageView
+            <CheckBox
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imgFavorite"
-                android:src="@drawable/abc_ic_star_black_36dp"
+                android:button="@android:drawable/btn_star"
                 android:layout_below="@+id/imgStand"
                 android:layout_centerHorizontal="true" />
 
