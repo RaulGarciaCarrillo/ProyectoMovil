@@ -42,7 +42,7 @@ public class FragmentPerfil extends Fragment {
 
         spinnerLenguaje = (Spinner) rootView.findViewById(R.id.spinnerLanguaje);
 
-       final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
+        final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
         int languaje = prefs.getInt("languaje", 0);
         spinnerLenguaje.setSelection(languaje);
 

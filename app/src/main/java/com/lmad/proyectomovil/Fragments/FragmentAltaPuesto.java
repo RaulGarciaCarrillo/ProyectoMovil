@@ -44,7 +44,6 @@ public class FragmentAltaPuesto extends Fragment {
 
     Boolean checkedBuffet, checkedHamburger, checkedHotDog, checkedPizza, checkedChinese, checkedSnack, checkedTacos, checkedOthers;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
