@@ -59,7 +59,7 @@
 
     <!--Toast-->
     <string name="toast_Fragment">Already open!</string>
-
+    <string name="toast_contrasenia">Password not are equal</string>
     <!--Titles -->
 
 
