@@ -19,7 +19,7 @@
 
             <CheckBox
                 android:id="@+id/checkFavorite"
-                android:button="@android:drawable/btn_star"
+                android:button="@mipmap/ic_corazon"
                 android:layout_below="@+id/imgStand"
                 android:gravity="center_vertical|center_horizontal|start"
                 android:layout_centerHorizontal="true"
@@ -32,8 +32,8 @@
                 android:layout_alignWithParentIfMissing="false"
                 android:layout_centerInParent="false"
                 android:layout_centerVertical="false"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
             <Button
                 android:text="@string/btn_compartir"
@@ -99,11 +99,11 @@
                 android:id="@+id/imgStand"
                 android:contentDescription="Puesto de los tacos roman"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/tvNameStand"
-                android:layout_centerHorizontal="true"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                android:adjustViewBounds="false" />
+                android:adjustViewBounds="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
 
         </RelativeLayout>
