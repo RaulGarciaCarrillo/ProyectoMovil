@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.lmad.proyectomovil.Fragments.FragmentListaFavoritos;
 import com.lmad.proyectomovil.Fragments.FragmentLogin;
 import com.lmad.proyectomovil.Fragments.FragmentMenuPrincipal;
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
         setContentView(R.layout.activity_main);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 

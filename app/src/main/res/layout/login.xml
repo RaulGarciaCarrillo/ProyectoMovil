@@ -6,20 +6,10 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
         android:id="@+id/imgPhotoStand"
-        android:src="@mipmap/ic_launcher"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editUser"
-        android:layout_below="@+id/imgPhotoStand"
-        android:hint="@string/login_User"
-        android:textAlignment="center" />
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_height="150dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -55,8 +45,9 @@
         android:text="@string/login_btnFacebook"
         android:id="@+id/btnFacebook"
         android:layout_below="@+id/txtOr"
-        android:background="#2b42c7"
-        android:layout_centerHorizontal="true" />
+        android:background="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/background_light" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -72,5 +63,17 @@
             android:id="@+id/btnRegister"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editUser"
+        android:hint="@string/login_User"
+        android:textAlignment="center"
+        android:layout_below="@+id/imgPhotoStand"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
 
 </RelativeLayout>

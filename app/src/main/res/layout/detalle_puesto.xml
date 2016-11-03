@@ -25,6 +25,22 @@
                 android:layout_below="@+id/imgStand"
                 android:layout_centerHorizontal="true" />
 
+            <Button
+                android:text="@string/btn_compartir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCompartir"
+                android:layout_below="@+id/tvComment"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:padding="10dp"
+                android:elevation="0dp"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="false"
+                android:layout_centerInParent="true" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lstComennts"
-                android:layout_below="@+id/tvComment" />
+                android:layout_below="@+id/btnCompartir" />
 
             <EditText
                 android:layout_width="match_parent"

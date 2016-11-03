@@ -66,6 +66,7 @@
     <!--Titles -->
     <string name="fragmentAdd">Agregar Puesto</string>
     <string name="fragmentProfile">Perfil</string>
+    <string name="btn_compartir">Share</string>
 
 
 </resources>

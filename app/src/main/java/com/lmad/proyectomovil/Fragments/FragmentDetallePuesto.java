@@ -2,6 +2,7 @@ package com.lmad.proyectomovil.Fragments;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.share.internal.ShareFeedContent;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 import com.lmad.proyectomovil.DrawerLocker;
+import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.ComentarioAdapter;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
@@ -46,6 +53,7 @@ public class FragmentDetallePuesto extends Fragment{
     TextView tvDescription, tvNameStand;
     ListView lstComennts;
     Button btnPost;
+    Button btnCompartir;
     EditText editComment;
 
     ScrollView scrollPuesto;
@@ -62,6 +70,8 @@ public class FragmentDetallePuesto extends Fragment{
         btnPost = (Button) rootView.findViewById(R.id.btnPost);
         editComment = (EditText) rootView.findViewById(R.id.editComment);
         scrollPuesto = (ScrollView) rootView.findViewById(R.id.scrollPuesto);
+        btnCompartir = (Button) rootView.findViewById(R.id.btnCompartir);
+
 
         new Networking(rootView.getContext()).execute("cargarDetallePuesto", puesto,new MyCallback() {
             @Override
@@ -75,7 +85,6 @@ public class FragmentDetallePuesto extends Fragment{
                         imgStand.setImageBitmap(foto);
                         tvDescription.setText(puesto.getDescripcion());
                         getActivity().setTitle(puesto.getNombre());
-
                     }
                 });
             }
@@ -89,6 +98,25 @@ public class FragmentDetallePuesto extends Fragment{
                 new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 2, editComment.getText().toString());
                 editComment.setText("");
                 ChargeList();
+            }
+        });
+
+        btnCompartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String msg = puesto.getNombre() + " " + puesto.getDescripcion() + " ubicados en " + puesto.getDireccion();
+
+                SharePhoto sharePhoto = new SharePhoto.Builder().setBitmap(decodeBase64(puesto.getFoto())).setCaption(msg).build();
+                SharePhotoContent content = new SharePhotoContent.Builder().addPhoto(sharePhoto).build();
+                //ShareDialog.show(getActivity(), content);
+                /*ShareLinkContent content = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                        .setContentTitle(puesto.getNombre())
+                        .setContentDescription(puesto.getDescripcion() + "ubicados en " + puesto.getDescripcion())
+
+                        .build();*/
+                ShareDialog.show(getActivity(), content);
             }
         });
 

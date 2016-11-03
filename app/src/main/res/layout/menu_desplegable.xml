@@ -7,15 +7,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="@color/colorPrimary"
-        android:padding="10dp">
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imgLogo"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/logo"
             android:scaleType="fitXY" />
 
     </LinearLayout>
