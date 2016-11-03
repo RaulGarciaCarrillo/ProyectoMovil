@@ -10,18 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
+import com.lmad.proyectomovil.networking.Networking;
 
 /**
  * Created by Mario on 22/10/2016.
  */
 
 public class FragmentLogin extends Fragment {
+
+
     Button btnLogIn,btnRegister;
+    EditText editUser, editPassword;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,17 +37,20 @@ public class FragmentLogin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.login, container, false);
+        final View rootView = inflater.inflate(R.layout.login, container, false);
 
         ((DrawerLocker)getActivity()).setDrawerEnable(false);  //bloquear navigation drawer
 
         btnLogIn = (Button) rootView.findViewById(R.id.btnLogin);
         btnRegister = (Button) rootView.findViewById(R.id.btnRegister);
+        editUser = (EditText) rootView.findViewById(R.id.editUser);
+        editPassword = (EditText) rootView.findViewById(R.id.editPassword);
 
         //botón Inicia Sesión
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText(),editPassword.getText());
                 changeFragment(new FragmentMenuPrincipal(), "inicio");
             }
         });
