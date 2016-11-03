@@ -60,8 +60,10 @@
 
     <!--Toast-->
     <string name="toast_Fragment">¡Ya está abierto!</string>
-    <string name="toast_contrasenia">Las contraseñas no son iguales</string>
-    <string name="toast_faltan_campos">Faltan campos por llenar</string>
+    <string name="toast_contrasenia">Las contraseñas no son iguales.</string>
+    <string name="toast_faltan_campos">¡Faltan campos por llenar!</string>
+    <string name="favoriteAdd">Agregado a favoritos.</string>
+    <string name="addStand">Puesto agregado exitosamente.</string>
 
     <!--Titles -->
     <string name="fragmentAdd">Agregar Puesto</string>

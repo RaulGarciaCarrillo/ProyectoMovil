@@ -60,7 +60,9 @@
     <!--Toast-->
     <string name="toast_Fragment">Already open!</string>
     <string name="toast_contrasenia">Password not are equal</string>
-    <string name="toast_faltan_campos">"Fill in missing fields "</string>
+    <string name="toast_faltan_campos">"Fill in missing fields!"</string>
+    <string name="favoriteAdd">Added to favorites</string>
+    <string name="addStand">Stand added successful.</string>
     <!--Toast-->
 
     <!--Titles -->
