@@ -76,7 +76,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedBuffet==false){
-                    Toast.makeText(getContext(), "Buffet", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Buffet", Toast.LENGTH_SHORT).show();
                     checkedBuffet=true;
                 }
                 else
@@ -88,7 +88,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedHamburger==false){
-                    Toast.makeText(getContext(), "Hamburger", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Hamburger", Toast.LENGTH_SHORT).show();
                     checkedHamburger=true;
                 }
                 else
@@ -100,7 +100,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedHotDog==false){
-                    Toast.makeText(getContext(), "Hot-Dog", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Hot-Dog", Toast.LENGTH_SHORT).show();
                     checkedHotDog=true;
                 }
                 else
@@ -112,7 +112,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedPizza==false){
-                    Toast.makeText(getContext(), "Pizza", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Pizza", Toast.LENGTH_SHORT).show();
                     checkedPizza=true;
                 }
                 else
@@ -124,7 +124,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedChinese==false){
-                    Toast.makeText(getContext(), "Chinese", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Chinese", Toast.LENGTH_SHORT).show();
                     checkedChinese=true;
                 }
                 else
@@ -136,7 +136,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedSnack==false){
-                    Toast.makeText(getContext(), "Snack", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Snack", Toast.LENGTH_SHORT).show();
                     checkedSnack=true;
                 }
                 else
@@ -148,7 +148,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedTacos==false){
-                    Toast.makeText(getContext(), "Tacos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Tacos", Toast.LENGTH_SHORT).show();
                     checkedTacos=true;
                 }
                 else
@@ -160,7 +160,7 @@ public class FragmentAltaPuesto extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkedOthers==false){
-                    Toast.makeText(getContext(), "Others", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Others", Toast.LENGTH_SHORT).show();
                     checkedOthers=true;
                 }
                 else
@@ -197,7 +197,7 @@ public class FragmentAltaPuesto extends Fragment {
                 if ((checkedBuffet==false && checkedHamburger==false && checkedHotDog==false &&  checkedPizza==false
                         && checkedChinese==false &&  checkedSnack==false && checkedTacos==false &&  checkedOthers==false)
                         || puesto.getNombre().isEmpty() || puesto.getDescripcion().isEmpty() || puesto.getFoto().isEmpty()){
-                    Toast.makeText(getContext(), "¡Faltan campos por llenar!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else {
@@ -220,7 +220,7 @@ public class FragmentAltaPuesto extends Fragment {
                     if(checkedOthers==true)
                         new Networking(rootView.getContext()).execute("agregarPuestoComida", 8);
 
-                    Toast.makeText(getContext(), "Puesto agregado exitosamente.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.addStand), Toast.LENGTH_SHORT).show();
                     changeFragment(new FragmentMenuPrincipal(), "inicio");
                 }
             }
@@ -236,7 +236,6 @@ public class FragmentAltaPuesto extends Fragment {
             try {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 imgPhotoStand.setImageBitmap(bitmap);
-                Toast.makeText(getContext(),"Foto guardada", Toast.LENGTH_SHORT).show();
 
             } catch(Exception ex) {
                 ex.printStackTrace();

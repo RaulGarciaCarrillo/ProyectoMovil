@@ -40,6 +40,11 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     static final String SERVER_AGREGAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto.php";
     static final String SERVER_AGREGAR_PUESTO_COMIDA = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto_Comida.php";
     static final String SERVER_AGREGAR_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/agregarFavorito.php";
+    static final String SERVER_AGREGAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto.php";
+    static final String SERVER_AGREGAR_PUESTO_COMIDA = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto_Comida.php";
+    static final String SERVER_AGREGAR_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/agregarFavorito.php";
+    static final String SERVER_ELIMINAR_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/eliminarFavorito.php";
+    static final String SERVER_OBTENER_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/obtenerFavorito.php";
 
     static final int TIMEOUT = 5000;
 
@@ -65,16 +70,6 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
         String action = (String) params[0];
 
         switch (action){
-
-            case "agregarPuesto":
-                Puesto puestoAgregar = (Puesto) params[1];
-                agregarPuesto(puestoAgregar);
-                break;
-
-            case "agregarPuestoComida":
-                Integer idPuestoTipoComida = (Integer) params[1];
-                agregarPuestoComida(idPuestoTipoComida);
-                break;
 
             case "cargarPuestos":
                 Integer idTipoComida = (Integer) params[1];
@@ -114,6 +109,33 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
                 String contra = (String) params[2];
                 validacionUsuario(correo,contra);
 
+            case "agregarPuesto":
+                Puesto puestoAgregar = (Puesto) params[1];
+                agregarPuesto(puestoAgregar);
+                break;
+
+            case "agregarPuestoComida":
+                Integer idPuestoTipoComida = (Integer) params[1];
+                agregarPuestoComida(idPuestoTipoComida);
+                break;
+
+            case "agregarFavorito":
+                Integer idUsuarioAF = (Integer) params[1];
+                Integer idPuestoAF = (Integer) params [2];
+                agregarFavorito(idUsuarioAF,idPuestoAF);
+                break;
+
+            case "eliminarFavorito":
+                Integer idUsuarioEF = (Integer) params[1];
+                Integer idPuestoEF = (Integer) params [2];
+                eliminarFavorito(idUsuarioEF,idPuestoEF);
+                break;
+
+            case "obtenerFavorito":
+                Integer idUsuarioOF = (Integer) params[1];
+                Integer idPuestoOF = (Integer) params [2];
+                obtenerFavorito(idUsuarioOF,idPuestoOF);
+                break;
 
         }
         return null;
@@ -387,6 +409,142 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    private void agregarPuesto(Puesto puesto){
+        String postParams ="&idUsuario="+1+"&nombre="+puesto.getNombre()+"&descripcion="+puesto.getDescripcion()
+                +"&direccion="+puesto.getDireccion()+ "&coordenadas="+puesto.getCoordenadas()+"&foto="+puesto.getFoto();
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_AGREGAR_PUESTO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarPuestoComida(Integer idPuestoTipoComida){
+        String postParams ="&idTipoComida="+idPuestoTipoComida;
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_AGREGAR_PUESTO_COMIDA);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarFavorito (Integer idUsuario, Integer idPuesto){
+        String postParams ="&idUsuario="+idUsuario+"&idPuesto="+idPuesto;
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_AGREGAR_FAVORITO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void eliminarFavorito (Integer idUsuario, Integer idPuesto){
+        String postParams ="&idUsuario="+idUsuario+"&idPuesto="+idPuesto;
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_ELIMINAR_FAVORITO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private Integer obtenerFavorito (Integer idUsuario, Integer idPuesto){
+        String postParams ="&idUsuario="+idUsuario+"&idPuesto="+idPuesto;
+        URL url = null;
+        HttpURLConnection conn = null;
+        Integer fav=0;
+
+        try {
+            url = new URL(SERVER_OBTENER_FAVORITO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+            try {
+                JSONObject jsonObject = new JSONObject(responseString);
+                fav=(jsonObject.getInt("Favorito"));
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return fav;
     }
 
     // Metodo que lee un String desde un InputStream (Convertimos el InputStream del servidor en un String)aadfsa

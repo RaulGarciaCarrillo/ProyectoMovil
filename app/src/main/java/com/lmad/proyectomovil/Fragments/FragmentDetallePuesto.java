@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -55,6 +56,8 @@ public class FragmentDetallePuesto extends Fragment{
     Button btnPost;
     Button btnCompartir;
     EditText editComment;
+    CheckBox checkFavorite;
+    Integer checkedFavorite;
 
     ScrollView scrollPuesto;
 
@@ -71,6 +74,9 @@ public class FragmentDetallePuesto extends Fragment{
         editComment = (EditText) rootView.findViewById(R.id.editComment);
         scrollPuesto = (ScrollView) rootView.findViewById(R.id.scrollPuesto);
         btnCompartir = (Button) rootView.findViewById(R.id.btnCompartir);
+        checkFavorite = (CheckBox) rootView.findViewById(R.id.checkFavorite);
+
+        checkedFavorite=0;
 
 
         new Networking(rootView.getContext()).execute("cargarDetallePuesto", puesto,new MyCallback() {
@@ -85,12 +91,39 @@ public class FragmentDetallePuesto extends Fragment{
                         imgStand.setImageBitmap(foto);
                         tvDescription.setText(puesto.getDescripcion());
                         getActivity().setTitle(puesto.getNombre());
+
                     }
                 });
             }
         });
 
         ChargeList();
+
+        ChargeFavorite();
+
+        if(checkedFavorite==1)
+            checkFavorite.setChecked(true);
+        else
+            checkFavorite.setChecked(false);
+
+
+        checkFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkedFavorite==0){
+                    new Networking(rootView.getContext()).execute("agregarFavorito",1,puesto.getId());
+                    checkedFavorite=1;
+                    Toast.makeText(getContext(), "Agregado a favoritos.", Toast.LENGTH_SHORT).show();
+                }
+               else {
+                    new Networking(rootView.getContext()).execute("eliminarFavorito",1,puesto.getId());
+                    checkedFavorite=0;
+                    Toast.makeText(getContext(), "Eliminado de favoritos.", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +215,24 @@ public class FragmentDetallePuesto extends Fragment{
                             lstComennts.setAdapter(comentarioAdapter);
                             setListViewHeightBasedOnChildren(lstComennts);
                         }
+                    }
+                });
+            }
+        });
+    }
+
+    private void ChargeFavorite (){
+        new Networking(rootView.getContext()).execute("obtenerFavorito",1 ,puesto.getId(), new MyCallback() {
+            @Override
+            public void onWorkFinish(Object data) {
+                checkedFavorite = (Integer) data;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(checkedFavorite==1)
+                            checkFavorite.setChecked(true);
+                        else
+                            checkFavorite.setChecked(false);
                     }
                 });
             }
