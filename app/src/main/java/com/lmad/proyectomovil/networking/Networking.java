@@ -36,6 +36,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     static final String SERVER_LISTA_COMENTARIOS = "http://www.multimediarts.com.mx/foodpoint/listaComentarios.php";
     static final String SERVER_AGREGAR_COMENTARIO = "http://www.multimediarts.com.mx/foodpoint/agregarComentario.php";
     static final String SERVER_AGREGAR_USUARIO = "http://www.multimediarts.com.mx/foodpoint/agregarUsuario.php";
+    static final String SERVER_MODIFICAR_USUARIO = "http://www.multimediarts.com.mx/foodpoint/modificarUsuario.php";
     static final String SERVER_VALIDAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/validarLogin.php";
     static final String SERVER_AGREGAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto.php";
     static final String SERVER_AGREGAR_PUESTO_COMIDA = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto_Comida.php";
@@ -101,6 +102,11 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
                 agregarUsuario(usuarioAgregar);
                 break;
 
+            case "modificarUsuario":
+                Usuario usuarioModificar = (Usuario) params[1];
+                modificarUsuario(usuarioModificar);
+                break;
+
             case "validacionUsuario":
                 String correo = (String) params[1];
                 String contra = (String) params[2];
@@ -131,7 +137,9 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
             case "obtenerFavorito":
                 Integer idUsuarioOF = (Integer) params[1];
                 Integer idPuestoOF = (Integer) params [2];
-                obtenerFavorito(idUsuarioOF,idPuestoOF);
+                Integer esFavorito = obtenerFavorito(idUsuarioOF,idPuestoOF);
+                MyCallback myCallback3 = (MyCallback) params[3];
+                myCallback3.onWorkFinish(esFavorito);
                 break;
 
         }
@@ -312,6 +320,31 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
 
         try {
             url = new URL(SERVER_AGREGAR_USUARIO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void modificarUsuario(Usuario usuario) {
+        String postParams = "&idUsuario="+usuario.getId()+"&apodo="+usuario.getApodo()+"&correo="+usuario.getCorreo()+"&contrasena="+usuario.getContrasenia()+"&foto="+usuario.getFoto();
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL(SERVER_MODIFICAR_USUARIO);
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setDoInput(true);
