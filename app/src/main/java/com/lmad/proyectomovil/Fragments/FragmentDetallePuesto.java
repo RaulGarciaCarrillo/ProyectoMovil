@@ -102,10 +102,15 @@ public class FragmentDetallePuesto extends Fragment{
 
         ChargeFavorite();
 
-        if(checkedFavorite==1)
+        if(checkedFavorite==1) {
             checkFavorite.setChecked(true);
-        else
+            checkFavorite.setButtonDrawable(R.mipmap.ic_corazon_rojo);
+        }
+        else {
             checkFavorite.setChecked(false);
+            checkFavorite.setButtonDrawable(R.mipmap.ic_corazonvacio);
+
+        }
 
 
         checkFavorite.setOnClickListener(new View.OnClickListener() {
@@ -115,12 +120,13 @@ public class FragmentDetallePuesto extends Fragment{
                     new Networking(rootView.getContext()).execute("agregarFavorito",1,puesto.getId());
                     checkedFavorite=1;
                     Toast.makeText(getContext(), "Agregado a favoritos.", Toast.LENGTH_SHORT).show();
+                    checkFavorite.setButtonDrawable(R.mipmap.ic_corazon_rojo);
                 }
                else {
                     new Networking(rootView.getContext()).execute("eliminarFavorito",1,puesto.getId());
                     checkedFavorite=0;
                     Toast.makeText(getContext(), "Eliminado de favoritos.", Toast.LENGTH_SHORT).show();
-
+                    checkFavorite.setButtonDrawable(R.mipmap.ic_corazonvacio);
                 }
 
             }
@@ -230,10 +236,14 @@ public class FragmentDetallePuesto extends Fragment{
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(checkedFavorite==1)
+                        if(checkedFavorite == 1) {
                             checkFavorite.setChecked(true);
-                        else
+                            checkFavorite.setButtonDrawable(R.mipmap.ic_corazon_rojo);
+                        }
+                        else {
                             checkFavorite.setChecked(false);
+                            checkFavorite.setButtonDrawable(R.mipmap.ic_corazonvacio);
+                        }
                     }
                 });
             }
