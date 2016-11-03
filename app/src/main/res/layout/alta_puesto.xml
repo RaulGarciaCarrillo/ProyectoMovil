@@ -126,7 +126,7 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintHorizontal_bias="0.04"
                 app:layout_constraintLeft_toRightOf="@+id/checkHamburgers"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
             <CheckBox
                 android:text="@string/Pizza"
@@ -144,7 +144,7 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintHorizontal_bias="0.04"
                 app:layout_constraintLeft_toRightOf="@+id/checkHotDog"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
             <CheckBox
                 android:text="@string/Chinese"
@@ -159,7 +159,7 @@
                 app:layout_constraintLeft_toLeftOf="@+id/editNameStand"
                 app:layout_constraintHorizontal_bias="0.04"
                 android:textSize="12sp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"/>
 
             <CheckBox
                 android:text="@string/Snack"
@@ -179,7 +179,7 @@
                 app:layout_constraintHorizontal_bias="0.04"
                 android:textSize="12sp"
                 app:layout_constraintLeft_toRightOf="@+id/checkChinese"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"/>
 
             <CheckBox
                 android:text="@string/Tacos"
@@ -199,7 +199,7 @@
                 app:layout_constraintHorizontal_bias="0.04"
                 android:textSize="12sp"
                 app:layout_constraintLeft_toRightOf="@+id/checkSnack"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"/>
 
             <CheckBox
                 android:text="@string/Others"
@@ -217,7 +217,7 @@
                 app:layout_constraintHorizontal_bias="0.04"
                 android:textSize="12sp"
                 app:layout_constraintLeft_toRightOf="@+id/checkTacos"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"/>
 
 
             <TextView
@@ -237,7 +237,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"/>
 
             <ImageView
                 android:layout_width="214dp"
@@ -255,7 +255,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -275,7 +275,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp" />
+                android:layout_marginTop="12dp" />
 
             <EditText
                 android:layout_width="336dp"

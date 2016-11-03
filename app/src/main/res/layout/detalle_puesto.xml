@@ -16,19 +16,12 @@
         <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Tacos Roman"
-                android:id="@+id/tvNameStand"
-                android:textAlignment="center" />
 
-            <ImageView
+            <CheckBox
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imgFavorite"
-                android:src="@drawable/abc_ic_star_black_36dp"
+                android:button="@android:drawable/btn_star"
                 android:layout_below="@+id/imgStand"
                 android:layout_centerHorizontal="true" />
 
@@ -36,7 +29,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Este puesto vende unos tacos muy ricos y el servicio que ofrecen es muy bueno. Recomendado!"
                 android:id="@+id/tvDescription"
                 android:layout_below="@+id/imgFavorite"
                 android:layout_marginBottom="12dp" />
@@ -79,12 +71,13 @@
 
             <ImageView
                 android:id="@+id/imgStand"
-                android:src="@mipmap/ic_launcher"
                 android:contentDescription="Puesto de los tacos roman"
                 android:layout_width="match_parent"
                 android:layout_below="@+id/tvNameStand"
                 android:layout_centerHorizontal="true"
-                android:layout_height="150dp" />
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="false" />
 
 
         </RelativeLayout>
