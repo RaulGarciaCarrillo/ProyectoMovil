@@ -68,8 +68,9 @@
     <!--Titles -->
     <string name="fragmentAdd">Add Stand</string>
     <string name="fragmentProfile">Profile</string>
+    <string name="fragmentFavorites">Favorites</string>
 
     <string name="facebook_app_id">802431829793293</string>
 
-    <string name="btn_compartir">Compartir</string>
+    <string name="btn_compartir">Share</string>
 </resources>

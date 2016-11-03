@@ -66,6 +66,7 @@ public class FragmentDetallePuesto extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.detalle_puesto, container, false);
 
+
         tvNameStand = (TextView) rootView.findViewById(R.id.tvNameStand);
         imgStand = (ImageView) rootView.findViewById(R.id.imgStand);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
@@ -128,7 +129,7 @@ public class FragmentDetallePuesto extends Fragment{
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 2, editComment.getText().toString());
+                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 1, editComment.getText().toString());
                 editComment.setText("");
                 ChargeList();
             }
