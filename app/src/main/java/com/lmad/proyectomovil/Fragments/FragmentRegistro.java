@@ -55,6 +55,8 @@ public class FragmentRegistro extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.registro, container, false);
 
+        getActivity().setTitle(getResources().getString(R.string.fragmentRegister));
+
         btnCancel = (Button) rootView.findViewById(R.id.btnCancel);
         btnSignIn = (Button) rootView.findViewById(R.id.btnSignIn);
 
@@ -90,13 +92,14 @@ public class FragmentRegistro extends Fragment {
             public void onClick(View v) {
 
 
-
-
                 if(editPassword.getText().toString().equals(editConfirmPassword.getText().toString())) {
                     if(editPassword.getText().toString().equals("") ||
-                            editConfirmPassword.getText().toString().equals("") ||
-                            editUser.getText().toString().equals("") ||
-                            editUserName.getText().toString().equals("")) {
+                        editConfirmPassword.getText().toString().equals("") ||
+                        editUser.getText().toString().equals("") ||
+                        editUserName.getText().toString().equals("")) {
+                            Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
+                            return;
+                    } else {
                         Usuario usuario = new Usuario();
                         Bitmap foto = ((BitmapDrawable) imgRegisterPicture.getDrawable()).getBitmap();
                         String fotoBase64 = encodeToBase64(foto);
@@ -117,8 +120,6 @@ public class FragmentRegistro extends Fragment {
                             }
                         });
                         changeFragment(new FragmentMenuPrincipal(), "inicio");
-                    }else{
-                        Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
                     }
                 } else{
                     Toast.makeText(getContext(), getResources().getString(R.string.toast_contrasenia), Toast.LENGTH_SHORT).show();

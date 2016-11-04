@@ -63,6 +63,7 @@
     <string name="toast_contrasenia">Las contraseñas no son iguales.</string>
     <string name="toast_faltan_campos">¡Faltan campos por llenar!</string>
     <string name="favoriteAdd">Agregado a favoritos.</string>
+    <string name="favoriteDelete">Eliminado de favoritos.</string>
     <string name="addStand">Puesto agregado exitosamente.</string>
 
     <!--Titles -->
@@ -70,6 +71,9 @@
     <string name="fragmentProfile">Perfil</string>
     <string name="btn_compartir">Compartir</string>
     <string name="fragmentFavorites">Favoritos</string>
+    <string name="fragmentMenu">Menú</string>
+    <string name="fragmentLogin">Inicia Sesión</string>
+    <string name="fragmentRegister">Regístrate</string>
 
 
 </resources>

@@ -54,6 +54,8 @@ public class FragmentMenuPrincipal extends Fragment {
         View rootView = inflater.inflate(R.layout.menu_principal, container, false);
         setHasOptionsMenu(true);
 
+        getActivity().setTitle(getResources().getString((R.string.fragmentMenu)));
+
         ((DrawerLocker)getActivity()).setDrawerEnable(true);
 
         imgBuffet = (ImageView) rootView.findViewById(R.id.imgBuffet);
@@ -168,17 +170,11 @@ public class FragmentMenuPrincipal extends Fragment {
         ft.commit();//cerrar conexión
     }
 
-
     // Metodo util para saber si hay conectividad o no.
     boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected() && networkInfo.isAvailable();
-    }
-
-
-    void showToast(String msg) {
-        Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

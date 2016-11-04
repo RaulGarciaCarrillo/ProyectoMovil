@@ -119,13 +119,13 @@ public class FragmentDetallePuesto extends Fragment{
                 if(checkedFavorite==0){
                     new Networking(rootView.getContext()).execute("agregarFavorito",1,puesto.getId());
                     checkedFavorite=1;
-                    Toast.makeText(getContext(), "Agregado a favoritos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getActivity().getString(R.string.favoriteAdd), Toast.LENGTH_SHORT).show();
                     checkFavorite.setButtonDrawable(R.mipmap.ic_corazon_rojo);
                 }
                else {
                     new Networking(rootView.getContext()).execute("eliminarFavorito",1,puesto.getId());
                     checkedFavorite=0;
-                    Toast.makeText(getContext(), "Eliminado de favoritos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getActivity().getString(R.string.favoriteDelete), Toast.LENGTH_SHORT).show();
                     checkFavorite.setButtonDrawable(R.mipmap.ic_corazonvacio);
                 }
 

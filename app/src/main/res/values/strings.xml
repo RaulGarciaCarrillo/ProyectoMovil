@@ -62,6 +62,7 @@
     <string name="toast_contrasenia">Password not are equal</string>
     <string name="toast_faltan_campos">"Fill in missing fields!"</string>
     <string name="favoriteAdd">Added to favorites</string>
+    <string name="favoriteDelete">Delete from favorites.</string>
     <string name="addStand">Stand added successful.</string>
     <!--Toast-->
 
@@ -69,6 +70,9 @@
     <string name="fragmentAdd">Add Stand</string>
     <string name="fragmentProfile">Profile</string>
     <string name="fragmentFavorites">Favorites</string>
+    <string name="fragmentMenu">Menu</string>
+    <string name="fragmentLogin">Log In</string>
+    <string name="fragmentRegister">Register</string>
 
     <string name="facebook_app_id">802431829793293</string>
 
