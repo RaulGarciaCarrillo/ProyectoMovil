@@ -17,6 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imgStand"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
             <CheckBox
                 android:id="@+id/checkFavorite"
                 android:button="@mipmap/ic_corazon"
@@ -60,12 +69,34 @@
                 android:layout_marginBottom="12dp" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDescription"
+                android:id="@+id/tvLocation"
+                android:text="@string/detail_Location"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <com.google.android.gms.maps.MapView
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tvLocation"
+                android:layout_height="220dp"
+                android:id="@+id/mapViewD" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mapViewD"
+                android:id="@+id/tvAddress" />
+
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/detail_Comment"
                 android:id="@+id/tvComment"
-                android:layout_below="@+id/tvDescription"
+                android:layout_below="@+id/tvAddress"
                 android:textAlignment="center" />
 
             <ListView
@@ -94,16 +125,6 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/editComment"
                 android:layout_alignStart="@+id/imgStand" />
-
-            <ImageView
-                android:id="@+id/imgStand"
-                android:contentDescription="Puesto de los tacos roman"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="false"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
 
 
         </RelativeLayout>

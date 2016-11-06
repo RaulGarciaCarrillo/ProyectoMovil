@@ -67,10 +67,7 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
     FloatingActionButton btnAddLocal;
     Boolean checkedBuffet, checkedHamburger, checkedHotDog, checkedPizza, checkedChinese, checkedSnack, checkedTacos, checkedOthers;
     ScrollView scrollAlta;
-    // Geocoding:
-    // Transforma coordenadas geograficas en direcciones (calle, colonia, avenidas, pais, etc)
-    // Reverse Geocoding
-    // Transofma nombre de direcciones (calles, colonias, avenidas, pais, etc) en coordenadas geograficas
+
     Geocoder geocoder;
     // Objeto con el cual podremos hacer uso de nuestro mapa de Google
     GoogleMap map;
@@ -84,13 +81,6 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
         final View rootView = inflater.inflate(R.layout.alta_puesto, container, false);
         getActivity().setTitle(getResources().getString((R.string.fragmentAdd)));
 
-        /*MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.fragment);
-
-        // Como estamos implementando OnMapReadyCallback (Ver arriba) esto quiere decir que se debe de encontrar
-        // el metodo "onMapReady" y una ves que se termine de cargar el mapa se llamara a este metodo para poder
-        // comenzar a utilizar el objeto mapa
-        mapFragment.getMapAsync(this); */
-
         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
@@ -103,7 +93,9 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        // Como estamos implementando OnMapReadyCallback (Ver arriba) esto quiere decir que se debe de encontrar
+        // el metodo "onMapReady" y una ves que se termine de cargar el mapa se llamara a este metodo para poder
+        // comenzar a utilizar el objeto mapa
         mMapView.getMapAsync(this) ;
 
         puesto = new Puesto();
@@ -382,6 +374,15 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
             LatLng mtyLocation = new LatLng(25.65, -100.29);
             CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(mtyLocation, 16.f);
             map.moveCamera(cu);
+            List<Address> addresses;
+            geocoder = new Geocoder(getActivity(), Locale.getDefault());
+            try {
+                addresses = geocoder.getFromLocation(25.65, -100.29, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                String address = addresses.get(0).getAddressLine(0) + ", " + addresses.get(0).getLocality() + ", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName(); ; // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                puesto.setDireccion(address);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         // Listener para detectar los eventos "Click" dentro del mapa

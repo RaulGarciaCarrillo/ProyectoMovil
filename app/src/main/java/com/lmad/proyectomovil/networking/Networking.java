@@ -561,10 +561,10 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
                     JSONObject obj = jsonArray.getJSONObject(i);
                     Puesto puesto = new Puesto();
                     puesto.setId(obj.getInt("idPuesto"));
-                   // puesto.setCoordenadas(obj.getString("coordenadas"));
+                    puesto.setCoordenadas(obj.getString("coordenadas"));
                     puesto.setNombre(obj.getString("NombrePuesto"));
                     puesto.setDescripcion(obj.getString("descripcion"));
-                    //puesto.setDireccion(obj.getString("direccion"));
+                    puesto.setDireccion(obj.getString("direccion"));
 
                     puesto.setFoto(obj.getString("foto"));
 
