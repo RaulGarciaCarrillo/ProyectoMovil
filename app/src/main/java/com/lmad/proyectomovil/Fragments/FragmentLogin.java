@@ -16,7 +16,10 @@ import android.widget.Toast;
 import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
+import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.networking.Networking;
+
+import static android.R.attr.data;
 
 /**
  * Created by Mario on 22/10/2016.
@@ -24,7 +27,7 @@ import com.lmad.proyectomovil.networking.Networking;
 
 public class FragmentLogin extends Fragment {
 
-
+    View rootView;
     Button btnLogIn,btnRegister;
     EditText editUser, editPassword;
 
@@ -46,12 +49,26 @@ public class FragmentLogin extends Fragment {
         editUser = (EditText) rootView.findViewById(R.id.editUser);
         editPassword = (EditText) rootView.findViewById(R.id.editPassword);
 
+
         //botón Inicia Sesión
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText(),editPassword.getText());
-                changeFragment(new FragmentMenuPrincipal(), "inicio");
+                //AQUI ABAJO!!!
+
+               // loginopi(); //Funcion que se supone hace lo mismo pero no jala :v
+
+                 new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(),editPassword.getText().toString());
+
+
+               /* final Integer idusuario = (Integer) data;
+                if(idusuario == 0){
+                    changeFragment(new FragmentMenuPrincipal(), "inicio");
+                }else{
+                    Toast.makeText(getContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                }
+                changeFragment(new FragmentMenuPrincipal(), "inicio");*/
+
             }
         });
 
@@ -82,4 +99,27 @@ public class FragmentLogin extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
     }
+
+   /* private void loginopi (){
+        new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(),editPassword.getText().toString(), new MyCallback() {
+            @Override
+            public void onWorkFinish(final Object data) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Integer idusuario = (Integer) data;
+                        if(idusuario == 0){
+                            changeFragment(new FragmentMenuPrincipal(), "inicio");
+                        }else{
+                            Toast.makeText(getContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        }
+                        changeFragment(new FragmentMenuPrincipal(), "inicio");
+
+                    }
+                });
+            }
+        });
+
+    }*/
 }
+
