@@ -12,6 +12,7 @@
     <string name="add_Description">Description</string>
     <string name="add_Description_Hint">The restaurant is...</string>
     <string name="add_Type">Types of Food</string>
+    <string name="add_Location">Location</string>
     
     <string name="Buffet">Buffet</string>
     <string name="Chinese">Chinese</string>

@@ -13,6 +13,7 @@
     <string name="add_Description">Descripción</string>
     <string name="add_Description_Hint">El restaurante es...</string>
     <string name="add_Type">Tipos de Comida</string>
+    <string name="add_Location">Ubicación</string>
 
     <string name="Buffet">Buffet</string>
     <string name="Chinese">China</string>

@@ -134,7 +134,7 @@ public class FragmentMenuPrincipal extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(9);
+                fragmentListaPuesto.setIdTipoComida(8);
                 changeFragment(fragmentListaPuesto, "listaPuesto");
             }
         });
