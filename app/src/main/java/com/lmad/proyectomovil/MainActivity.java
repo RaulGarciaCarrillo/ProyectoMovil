@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
 
         if (existingFragment == null) {
 
-            changeFragment(new FragmentMenuPrincipal(), "inicio");
+            changeFragment(new FragmentLogin(), "login");
         }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
