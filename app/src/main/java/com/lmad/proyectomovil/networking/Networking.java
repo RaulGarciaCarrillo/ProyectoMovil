@@ -37,7 +37,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     static final String SERVER_AGREGAR_COMENTARIO = "http://www.multimediarts.com.mx/foodpoint/agregarComentario.php";
     static final String SERVER_AGREGAR_USUARIO = "http://www.multimediarts.com.mx/foodpoint/agregarUsuario.php";
     static final String SERVER_MODIFICAR_USUARIO = "http://www.multimediarts.com.mx/foodpoint/modificarUsuario.php";
-    static final String SERVER_VALIDAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/validarLogin.php";
+    static final String SERVER_VALIDAR_LOGIN = "http://www.multimediarts.com.mx/foodpoint/validarLogin.php";
     static final String SERVER_AGREGAR_PUESTO = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto.php";
     static final String SERVER_AGREGAR_PUESTO_COMIDA = "http://www.multimediarts.com.mx/foodpoint/agregarPuesto_Comida.php";
     static final String SERVER_AGREGAR_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/agregarFavorito.php";
@@ -111,7 +111,11 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
             case "validacionUsuario":
                 String correo = (String) params[1];
                 String contra = (String) params[2];
-                validacionUsuario(correo,contra);
+                Integer validacion = validacionUsuario(correo,contra);
+                MyCallback myCallback4 = (MyCallback) params[3];
+                myCallback4.onWorkFinish(validacion);
+                break;
+
 
             case "agregarPuesto":
                 Puesto puestoAgregar = (Puesto) params[1];
@@ -371,13 +375,14 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
         }
     }
 
-    private void validacionUsuario (String usuario, String contra ){
+    private Integer validacionUsuario (String usuario, String contra ){
         String postParams = "&correo" +usuario+ "&contra" +contra;
         URL url = null;
         HttpURLConnection conn = null;
+        Integer validacion = 0;
 
         try{
-            url = new URL(SERVER_VALIDAR_PUESTO);
+            url = new URL(SERVER_VALIDAR_LOGIN);
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -392,10 +397,20 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
             InputStream in = new BufferedInputStream(conn.getInputStream());
             String responseString = inputStreamToString(in);
 
+            try {
+                JSONObject jsonObject = new JSONObject(responseString);
+                validacion=(jsonObject.getInt("idUsuario"));
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
+        return validacion;
     }
 
     private void agregarPuesto(Puesto puesto){
