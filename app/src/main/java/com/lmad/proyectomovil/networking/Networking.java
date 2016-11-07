@@ -376,7 +376,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     }
 
     private Integer validacionUsuario (String usuario, String contra ){
-        String postParams = "&correo" +usuario+ "&contra" +contra;
+        String postParams = "&correo=" +usuario+ "&contrasena=" +contra;
         URL url = null;
         HttpURLConnection conn = null;
         Integer validacion = 0;

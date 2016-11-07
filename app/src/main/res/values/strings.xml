@@ -65,6 +65,7 @@
     <string name="toast_faltan_campos">"Fill in missing fields!"</string>
     <string name="favoriteAdd">Added to favorites</string>
     <string name="favoriteDelete">Delete from favorites.</string>
+    <string name="toastLogin">User or password was invalid.</string>
     <string name="addStand">Stand added successful.</string>
     <!--Toast-->
 

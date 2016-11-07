@@ -66,6 +66,7 @@
     <string name="toast_faltan_campos">¡Faltan campos por llenar!</string>
     <string name="favoriteAdd">Agregado a favoritos.</string>
     <string name="favoriteDelete">Eliminado de favoritos.</string>
+    <string name="toastLogin">Usuario o contraseña incorrectos.</string>
     <string name="addStand">Puesto agregado exitosamente.</string>
 
     <!--Titles -->

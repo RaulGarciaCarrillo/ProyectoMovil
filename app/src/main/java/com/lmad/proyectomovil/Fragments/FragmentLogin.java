@@ -54,21 +54,30 @@ public class FragmentLogin extends Fragment {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //AQUI ABAJO!!!
-
-               // loginopi(); //Funcion que se supone hace lo mismo pero no jala :v
-
-                 new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(),editPassword.getText().toString());
-
-
-               /* final Integer idusuario = (Integer) data;
-                if(idusuario == 0){
-                    changeFragment(new FragmentMenuPrincipal(), "inicio");
-                }else{
-                    Toast.makeText(getContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                if (editUser.getText().toString().equals("") || editPassword.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                changeFragment(new FragmentMenuPrincipal(), "inicio");*/
-
+                else {
+                    new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(), editPassword.getText().toString(), new MyCallback() {
+                        @Override
+                        public void onWorkFinish(Object data) {
+                            final Integer idUsuario = (Integer) data;
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (idUsuario == 0) {
+                                        Toast.makeText(getContext(), getResources().getString(R.string.toastLogin), Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else {
+                                        changeFragment(new FragmentMenuPrincipal(), "inicio");
+                                        //Toast.makeText(getContext(), idUsuario.toString(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
 
