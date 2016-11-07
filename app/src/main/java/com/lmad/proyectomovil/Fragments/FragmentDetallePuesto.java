@@ -49,6 +49,7 @@ import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.ComentarioAdapter;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.Comentario;
 import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.model.Puesto;
@@ -147,14 +148,16 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
         checkFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                puesto.setIdUsuario(dataSource.getUsuario());
                 if(checkedFavorite==0){
-                    new Networking(rootView.getContext()).execute("agregarFavorito",1,puesto.getId());
+                    new Networking(rootView.getContext()).execute("agregarFavorito",puesto.getIdUsuario(),puesto.getId());
                     checkedFavorite=1;
                     Toast.makeText(getContext(), getActivity().getString(R.string.favoriteAdd), Toast.LENGTH_SHORT).show();
                     checkFavorite.setButtonDrawable(R.mipmap.ic_corazon_rojo);
                 }
                else {
-                    new Networking(rootView.getContext()).execute("eliminarFavorito",1,puesto.getId());
+                    new Networking(rootView.getContext()).execute("eliminarFavorito",puesto.getIdUsuario(),puesto.getId());
                     checkedFavorite=0;
                     Toast.makeText(getContext(), getActivity().getString(R.string.favoriteDelete), Toast.LENGTH_SHORT).show();
                     checkFavorite.setButtonDrawable(R.mipmap.ic_corazonvacio);
@@ -166,7 +169,7 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), 1, editComment.getText().toString());
+                new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), puesto.getIdUsuario(), editComment.getText().toString());
                 editComment.setText("");
                 ChargeList();
             }
@@ -258,7 +261,9 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
     }
 
     private void ChargeFavorite (){
-        new Networking(rootView.getContext()).execute("obtenerFavorito",1 ,puesto.getId(), new MyCallback() {
+        UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+        int IdUsuario = dataSource.getUsuario();
+        new Networking(rootView.getContext()).execute("obtenerFavorito",IdUsuario ,puesto.getId(), new MyCallback() {
             @Override
             public void onWorkFinish(Object data) {
                 checkedFavorite = (Integer) data;

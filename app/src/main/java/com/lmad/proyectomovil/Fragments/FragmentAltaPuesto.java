@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.lmad.proyectomovil.R;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.Puesto;
 import com.lmad.proyectomovil.networking.Networking;
 
@@ -250,6 +251,9 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
                     return;
                 }
                 else {
+                    UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                    puesto.setIdUsuario(dataSource.getUsuario());
+
                     new Networking(rootView.getContext()).execute("agregarPuesto", puesto);
 
                     if(checkedBuffet==true)

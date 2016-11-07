@@ -24,6 +24,7 @@ import com.lmad.proyectomovil.Fragments.FragmentListaFavoritos;
 import com.lmad.proyectomovil.Fragments.FragmentLogin;
 import com.lmad.proyectomovil.Fragments.FragmentMenuPrincipal;
 import com.lmad.proyectomovil.Fragments.FragmentPerfil;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 
 
 public class MainActivity extends AppCompatActivity implements DrawerLocker{
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
                 } else if (id == R.id.navFavoritos) {
                     changeFragment(new FragmentListaFavoritos(), "favoritos");
                 } else if (id == R.id.navCerrarSesion) {
+                    UsuarioDataSource dataSource = new UsuarioDataSource(MainActivity.this);
+                    dataSource.deleteUsuario();
                     changeFragment(new FragmentLogin(), "login");
                 }
                 //cerrar el navigation
@@ -123,4 +126,9 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker{
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

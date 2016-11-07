@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.networking.Networking;
 
@@ -71,7 +72,10 @@ public class FragmentLogin extends Fragment {
                                         return;
                                     } else {
                                         changeFragment(new FragmentMenuPrincipal(), "inicio");
-                                        //Toast.makeText(getContext(), idUsuario.toString(), Toast.LENGTH_SHORT).show();
+                                        UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                                        dataSource.insertUsuario(idUsuario);
+                                        Integer i = dataSource.getUsuario();
+                                        Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

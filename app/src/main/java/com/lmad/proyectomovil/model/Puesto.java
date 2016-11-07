@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 
 public class Puesto {
     int id;
+    int idUsuario;
     String nombre;
     String descripcion;
     String direccion;
@@ -61,5 +62,13 @@ public class Puesto {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

@@ -5,18 +5,18 @@ package com.lmad.proyectomovil.model;
  */
 
 public class Usuario {
-    String id;
+    int id;
     String apodo;
     String correo;
     String contrasenia;
     String foto;
     String activo;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
