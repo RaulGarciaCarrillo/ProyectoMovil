@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.model.Puesto;
 import com.lmad.proyectomovil.networking.Networking;
@@ -35,7 +36,9 @@ public class FragmentListaFavoritos extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.fragmentFavorites));
 
         lstFavoritos = (ListView) rootView.findViewById(R.id.lstFavoritos);
-        new Networking(rootView.getContext()).execute("cargarFavoritos", 1, new MyCallback() {
+        UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+        idUsuario = dataSource.getUsuario();
+        new Networking(rootView.getContext()).execute("cargarFavoritos", idUsuario, new MyCallback() {
             @Override
             public void onWorkFinish(Object data) {
                 final List<Puesto> puestoList = (List<Puesto>) data;

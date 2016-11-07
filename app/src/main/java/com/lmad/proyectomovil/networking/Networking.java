@@ -414,7 +414,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     }
 
     private void agregarPuesto(Puesto puesto){
-        String postParams ="&idUsuario="+1+"&nombre="+puesto.getNombre()+"&descripcion="+puesto.getDescripcion()
+        String postParams ="&idUsuario="+puesto.getIdUsuario()+"&nombre="+puesto.getNombre()+"&descripcion="+puesto.getDescripcion()
                 +"&direccion="+puesto.getDireccion()+ "&coordenadas="+puesto.getCoordenadas()+"&foto="+puesto.getFoto();
         URL url = null;
         HttpURLConnection conn = null;

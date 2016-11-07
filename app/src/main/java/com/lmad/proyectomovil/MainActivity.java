@@ -24,9 +24,9 @@ import com.lmad.proyectomovil.Fragments.FragmentListaFavoritos;
 import com.lmad.proyectomovil.Fragments.FragmentLogin;
 import com.lmad.proyectomovil.Fragments.FragmentMenuPrincipal;
 import com.lmad.proyectomovil.Fragments.FragmentPerfil;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 
 import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity implements DrawerLocker, GestureOverlayView.OnGesturePerformedListener {
     public DrawerLayout drawerLayout;
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
                 } else if (id == R.id.navFavoritos) {
                     changeFragment(new FragmentListaFavoritos(), "favoritos");
                 } else if (id == R.id.navCerrarSesion) {
+                    UsuarioDataSource dataSource = new UsuarioDataSource(MainActivity.this);
+                    dataSource.deleteUsuario();
                     changeFragment(new FragmentLogin(), "login");
                 }
                 //cerrar el navigation
@@ -115,5 +117,11 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
             String action = predictions.get(0).name;
             Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }
