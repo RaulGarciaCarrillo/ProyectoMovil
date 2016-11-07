@@ -26,14 +26,16 @@
                 android:textSize="20dp"
                 android:text="@string/add_Name"
                 android:gravity="center_vertical|center_horizontal|center"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textAllCaps="false" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editNameStand"
                 android:hint="@string/add_Name_Hint"
-                android:background="@color/button_material_light"
+                android:background="@color/colorPrimaryDark"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tvNameStand" />
@@ -47,7 +49,8 @@
                 android:layout_below="@+id/editNameStand"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="10dp" />
+                android:paddingTop="10dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -68,14 +71,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkBuffet"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
 
                     <CheckBox
                         android:text="@string/Hamburgers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkHamburgers"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,14 +93,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkHotDog"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
 
                     <CheckBox
                         android:text="@string/Pizza"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkPizza"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,14 +115,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkChinese"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
 
                     <CheckBox
                         android:text="@string/Snack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkSnack"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,14 +137,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkTacos"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
 
                     <CheckBox
                         android:text="@string/Others"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/checkOthers"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -149,7 +160,8 @@
                 android:layout_below="@+id/layoutType"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="10dp" />
+                android:paddingTop="10dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <ImageView
                 android:id="@+id/imgPhotoStand"
@@ -170,14 +182,15 @@
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_below="@+id/imgPhotoStand"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="10dp" />
+                android:paddingTop="10dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editDescriptionStand"
                 android:hint="@string/add_Description_Hint"
-                android:background="@color/button_material_light"
+                android:background="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tvDescriptionStand" />
 
@@ -189,7 +202,8 @@
                 android:text="@string/add_Location"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/editDescriptionStand"
-                android:paddingTop="10dp" />
+                android:paddingTop="10dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <com.google.android.gms.maps.MapView
                 android:layout_width="match_parent"
@@ -209,7 +223,7 @@
         android:clickable="true"
         app:fabSize="normal"
         app:srcCompat="@android:drawable/ic_input_add"
-        app:backgroundTint="@android:color/holo_blue_light"
+        app:backgroundTint="@color/colorPrimary"
         android:id="@+id/btnAddLocal"
         tools:layout_conversion_absoluteX="304dp"
         tools:layout_conversion_absoluteY="431dp"
