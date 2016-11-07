@@ -12,8 +12,7 @@
         android:id="@+id/gestures"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:gestureStrokeType="multiple"
-        android:fadeOffset="800">
+        android:gestureStrokeType="multiple">
 
     <FrameLayout
         android:layout_width="match_parent"
