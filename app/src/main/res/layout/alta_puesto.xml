@@ -35,10 +35,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editNameStand"
                 android:hint="@string/add_Name_Hint"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/common_google_signin_btn_text_light_disabled"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/tvNameStand" />
+                android:layout_below="@+id/tvNameStand"
+                android:textColor="?attr/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -190,9 +191,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editDescriptionStand"
                 android:hint="@string/add_Description_Hint"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/common_google_signin_btn_text_light_disabled"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/tvDescriptionStand" />
+                android:layout_below="@+id/tvDescriptionStand"
+                android:textColor="?attr/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="wrap_content"

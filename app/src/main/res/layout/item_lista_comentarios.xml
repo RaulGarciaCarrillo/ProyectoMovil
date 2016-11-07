@@ -24,7 +24,8 @@
             android:text="Usuario"
             android:id="@+id/tvComment_User"
             android:layout_gravity="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:background="@color/com_facebook_button_background_color_disabled" />
 
         <TextView
                 android:layout_width="match_parent"

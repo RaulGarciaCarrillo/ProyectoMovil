@@ -35,7 +35,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Buffet"
                 android:id="@+id/tv7"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,7 +58,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="China"
                 android:id="@+id/tv8"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,7 +81,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Hamburguesa"
                 android:id="@+id/tv9"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
     </LinearLayout>
 
@@ -113,7 +116,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Hot-dog"
                 android:id="@+id/tv4"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +139,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pizza"
                 android:id="@+id/tv5"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -157,7 +162,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Snack"
                 android:id="@+id/tv6"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
     </LinearLayout>
 
@@ -191,7 +197,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Tacos"
                 android:id="@+id/tvTacos"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -213,7 +220,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Otros"
                 android:id="@+id/tv2"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
