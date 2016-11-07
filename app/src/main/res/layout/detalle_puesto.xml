@@ -125,11 +125,6 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/editComment"
                 android:layout_alignStart="@+id/imgStand" />
-
-
         </RelativeLayout>
     </ScrollView>
-
-
-
 </RelativeLayout>
