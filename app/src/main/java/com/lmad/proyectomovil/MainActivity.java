@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
 
     @Override
     public void RefreshNav() {
+        drawerLayout.invalidate();
         invalidateOptionsMenu();
         //Toast.makeText(this, "Refrescar", Toast.LENGTH_SHORT).show();
     }

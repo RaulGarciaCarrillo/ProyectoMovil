@@ -11,9 +11,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 
 import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.R;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.model.Usuario;
 import com.lmad.proyectomovil.networking.Networking;
@@ -50,17 +53,6 @@ public class FragmentPerfil extends Fragment {
 
     Button btnProfileEdit;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        usuarioLogeado = new Usuario();
-        usuarioLogeado.setId("1");
-        usuarioLogeado.setCorreo("ragc_96@hotmail.com");
-        usuarioLogeado.setContrasenia("123");
-        usuarioLogeado.setApodo("Raul Garcia");
-        setRetainInstance(true);
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -74,17 +66,33 @@ public class FragmentPerfil extends Fragment {
         imgProfilePicture = (ImageView) rootView.findViewById(R.id.imgProfilePicture);
         btnProfileEdit = (Button) rootView.findViewById(R.id.btnProfileEdit);
 
+        usuarioLogeado = new Usuario();
+        UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+        usuarioLogeado.setId(dataSource.getUsuario());
+
+       /* new Networking(rootView.getContext()).execute("obtenerUsuario", usuarioLogeado,new MyCallback() {
+            @Override
+            public void onWorkFinish(Object data) {
+                final Usuario usuarioA = (Usuario) data;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Bitmap foto = decodeBase64(usuarioA.getFoto());
+                        imgProfilePicture.setImageBitmap(foto);
+                        editProfileUser.setText(usuarioA.getApodo());
+                        editProfileEmail.setText(usuarioA.getCorreo());
+                        editProfilePassword.setText(usuarioA.getContrasenia());
+                    }
+                });
+            }
+        }); */
+
         final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
         int languaje = prefs.getInt("languaje", 0);
         spinnerLenguaje.setSelection(languaje);
 
-        editProfileEmail.setText(usuarioLogeado.getCorreo());
-        editProfilePassword.setText(usuarioLogeado.getContrasenia());
-        editProfileUser.setText(usuarioLogeado.getApodo());
        // Bitmap bitmap = decodeBase64(usuarioLogeado.getFoto());
         //imgProfilePicture.setImageBitmap(bitmap);
-
-
 
         btnProfileEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +142,10 @@ public class FragmentPerfil extends Fragment {
 
               DisplayMetrics metrics = getActivity().getBaseContext().getResources().getDisplayMetrics();
               getActivity().getBaseContext().getResources().updateConfiguration(configuration,metrics);
+
+              DrawerLayout  drawerLayout= (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+
+              getActivity().invalidateOptionsMenu();
 
 
               prefs.edit().putInt("lenguaje", position).commit();

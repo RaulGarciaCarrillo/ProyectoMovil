@@ -169,6 +169,8 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                puesto.setIdUsuario(dataSource.getUsuario());
                 new Networking(rootView.getContext()).execute("agregarComentario", puesto.getId(), puesto.getIdUsuario(), editComment.getText().toString());
                 editComment.setText("");
                 ChargeList();
