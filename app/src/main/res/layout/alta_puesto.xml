@@ -222,7 +222,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="normal"
-        app:srcCompat="@android:drawable/ic_input_add"
+        app:srcCompat="@android:drawable/ic_menu_send"
         app:backgroundTint="@color/colorPrimary"
         android:id="@+id/btnAddLocal"
         tools:layout_conversion_absoluteX="304dp"
