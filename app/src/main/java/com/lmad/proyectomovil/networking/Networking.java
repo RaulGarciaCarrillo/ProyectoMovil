@@ -44,6 +44,7 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
     static final String SERVER_ELIMINAR_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/eliminarFavorito.php";
     static final String SERVER_OBTENER_FAVORITO = "http://www.multimediarts.com.mx/foodpoint/obtenerFavorito.php";
     static final String SERVER_LISTA_FAVORITOS = "http://www.multimediarts.com.mx/foodpoint/listaFavoritos.php";
+    static final String SERVER_OBTENER_USUARIO = "http://www.multimediarts.com.mx/foodpoint/obtenerUsuario.php";
 
     static final int TIMEOUT = 5000;
 
@@ -152,6 +153,13 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
                 List<Puesto> favoritosList = cargarFavoritos(idFavorito);
                 MyCallback myCallbackF = (MyCallback) params[2];
                 myCallbackF.onWorkFinish(favoritosList);
+                break;
+
+            case "obtenerUsuario":
+                Usuario usuario1 = (Usuario) params[1];
+                Usuario usuario2 = obtenerUsuario(usuario1.getId());
+                MyCallback myCallbackU = (MyCallback) params[2];
+                myCallbackU.onWorkFinish(usuario2);
                 break;
 
         }
@@ -595,6 +603,46 @@ public class Networking extends AsyncTask<Object, Integer, Object> {
         }
         return puestoList;
     }
+
+    private Usuario obtenerUsuario(int idUsuario) {
+        String postParams = "&idUsuario="+idUsuario;
+        URL url = null;
+        HttpURLConnection conn = null;
+
+        Usuario usuario = new Usuario();
+
+        try {
+            url = new URL(SERVER_OBTENER_USUARIO);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setConnectTimeout(TIMEOUT);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setFixedLengthStreamingMode(postParams.getBytes().length);
+            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
+            out.write(postParams.getBytes());
+            out.flush();
+            out.close();
+            int responseCode = conn.getResponseCode();
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String responseString = inputStreamToString(in);
+            try {
+                JSONObject jsonObject = new JSONObject(responseString);
+                usuario.setApodo(jsonObject.getString("apodo"));
+                usuario.setCorreo(jsonObject.getString("correo"));
+                usuario.setContrasenia(jsonObject.getString("contrasena"));
+                usuario.setFoto(jsonObject.getString("foto"));
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return usuario;
+    }
+
 
     // Metodo que lee un String desde un InputStream (Convertimos el InputStream del servidor en un String)aadfsa
     private String inputStreamToString(InputStream is) {
