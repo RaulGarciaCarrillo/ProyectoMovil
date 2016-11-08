@@ -1,6 +1,8 @@
 package com.lmad.proyectomovil;
 
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
@@ -16,7 +18,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
@@ -27,6 +33,7 @@ import com.lmad.proyectomovil.Fragments.FragmentPerfil;
 import com.lmad.proyectomovil.database.UsuarioDataSource;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements DrawerLocker, GestureOverlayView.OnGesturePerformedListener {
     public DrawerLayout drawerLayout;
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
     private CharSequence mTitle;
     private GestureLibrary libreria;
     NavigationView navigationView;
+    Spinner spinnerLenguaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +56,27 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
         }
         GestureOverlayView gestureOverlayView = (GestureOverlayView) findViewById(R.id.gestures);
         gestureOverlayView.addOnGesturePerformedListener(this);
+
+        SharedPreferences prefs = getSharedPreferences("AppLanguaje", MODE_PRIVATE);
+        final int lang = prefs.getInt("lang", 0);
+        // Cambia el idioma de la app
+        String lenguaje = "es";
+        if( lang == 1){
+            lenguaje = "en";
+        }
+
+        Locale loc = new Locale(lenguaje);
+        Locale.setDefault(loc);
+
+        Configuration config = new Configuration();
+        config.locale = loc;
+
+        DisplayMetrics metrics = getBaseContext().getResources().getDisplayMetrics();
+        getBaseContext().getResources().updateConfiguration(config, metrics);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         navigationView = (NavigationView) findViewById(R.id.nav_viewer);
         android.app.Fragment existingFragment = getFragmentManager().findFragmentById(android.R.id.content);
 

@@ -29,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.lmad.proyectomovil.DrawerLocker;
+import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.MyCallback;
@@ -50,13 +51,14 @@ public class FragmentPerfil extends Fragment {
     EditText editProfileEmail;
     EditText editProfilePassword;
     ImageView imgProfilePicture;
-
     Button btnProfileEdit;
+
+    View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.perfil, container, false);
+        rootView = inflater.inflate(R.layout.perfil, container, false);
         getActivity().setTitle(getResources().getString((R.string.fragmentProfile)));
 
         spinnerLenguaje = (Spinner) rootView.findViewById(R.id.spinnerLanguaje);
@@ -69,30 +71,42 @@ public class FragmentPerfil extends Fragment {
         usuarioLogeado = new Usuario();
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
         usuarioLogeado.setId(dataSource.getUsuario());
-
-       /* new Networking(rootView.getContext()).execute("obtenerUsuario", usuarioLogeado,new MyCallback() {
-            @Override
-            public void onWorkFinish(Object data) {
-                final Usuario usuarioA = (Usuario) data;
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Bitmap foto = decodeBase64(usuarioA.getFoto());
-                        imgProfilePicture.setImageBitmap(foto);
-                        editProfileUser.setText(usuarioA.getApodo());
-                        editProfileEmail.setText(usuarioA.getCorreo());
-                        editProfilePassword.setText(usuarioA.getContrasenia());
-                    }
-                });
-            }
-        }); */
-
+        
         final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
         int languaje = prefs.getInt("languaje", 0);
         spinnerLenguaje.setSelection(languaje);
+        spinnerLenguaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String len= spinnerLenguaje.getSelectedItem().toString();
+                String SelectLenguaje="";
 
-       // Bitmap bitmap = decodeBase64(usuarioLogeado.getFoto());
-        //imgProfilePicture.setImageBitmap(bitmap);
+                if (len.equals("Español")){
+                    SelectLenguaje="es";
+                } else {
+                    SelectLenguaje="en";
+                }
+
+                Locale loc = new Locale(SelectLenguaje);
+                Locale.setDefault(loc);
+
+                Configuration configuration = new Configuration();
+                configuration.locale = loc;
+
+                DisplayMetrics metrics = getActivity().getBaseContext().getResources().getDisplayMetrics();
+                getActivity().getBaseContext().getResources().updateConfiguration(configuration,metrics);
+                
+                prefs.edit().putInt("lenguaje", position).commit();
+                
+                //changeFragment(new FragmentPerfil(),len);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         btnProfileEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +120,10 @@ public class FragmentPerfil extends Fragment {
                 String fotoBase64 = encodeToBase64(foto);
                 usuarioModicicar.setFoto(fotoBase64);
                 new Networking(v.getContext()).execute("modificarUsuario", usuarioModicicar);
+                Toast.makeText(getContext(), getResources().getString(R.string.modifyProfile), Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
         imgProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,49 +135,7 @@ public class FragmentPerfil extends Fragment {
             }
         });
 
-
-      spinnerLenguaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-          @Override
-          public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-              String len= spinnerLenguaje.getSelectedItem().toString();
-              String SelectLenguaje="";
-
-              if (len.equals("Español")){
-                  SelectLenguaje="es";
-              } else {
-                  SelectLenguaje="en";
-              }
-
-              Locale loc = new Locale(SelectLenguaje);
-              Locale.setDefault(loc);
-
-              Configuration configuration = new Configuration();
-              configuration.locale = loc;
-
-              DisplayMetrics metrics = getActivity().getBaseContext().getResources().getDisplayMetrics();
-              getActivity().getBaseContext().getResources().updateConfiguration(configuration,metrics);
-
-              DrawerLayout  drawerLayout= (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-
-              getActivity().invalidateOptionsMenu();
-
-
-              prefs.edit().putInt("lenguaje", position).commit();
-
-
-              //Toast.makeText(getContext(), len, Toast.LENGTH_SHORT).show();
-
-
-              changeFragment(new FragmentPerfil(),len);
-
-
-          }
-
-          @Override
-          public void onNothingSelected(AdapterView<?> parent) {
-
-          }
-      });
+        obtenerUsuario();
 
         return rootView;
     }
@@ -186,13 +158,11 @@ public class FragmentPerfil extends Fragment {
 
         Fragment currentFragment = fm.findFragmentByTag(tag);
         if (currentFragment != null && currentFragment.isVisible()){
-            //Toast.makeText(getContext(), tag, Toast.LENGTH_SHORT).show();
             return;
         }
 
         FragmentTransaction ft= fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
 
-        //ft.addToBackStack(null); //no regresar al último fragmento
         ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
 
         ft.commit();//cerrar conexión
@@ -206,8 +176,7 @@ public class FragmentPerfil extends Fragment {
         setRetainInstance(true);
     }
 
-    public static String encodeToBase64(Bitmap image)
-    {
+    public static String encodeToBase64(Bitmap image) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
@@ -215,10 +184,28 @@ public class FragmentPerfil extends Fragment {
         return encoded;
     }
 
-    public static Bitmap decodeBase64(String input)
-    {
+    public static Bitmap decodeBase64(String input) {
         byte[] decodedBytes = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+    public void obtenerUsuario(){
+        new Networking(rootView.getContext()).execute("obtenerUsuario", usuarioLogeado,new MyCallback() {
+            @Override
+            public void onWorkFinish(Object data) {
+                final Usuario usuarioA = (Usuario) data;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Bitmap foto = decodeBase64(usuarioA.getFoto());
+                        imgProfilePicture.setImageBitmap(foto);
+                        editProfileUser.setText(usuarioA.getApodo());
+                        editProfileEmail.setText(usuarioA.getCorreo());
+                        editProfilePassword.setText(usuarioA.getContrasenia());
+                    }
+                });
+            }
+        });
     }
 
 }

@@ -68,6 +68,7 @@
     <string name="favoriteDelete">Eliminado de favoritos.</string>
     <string name="toastLogin">Usuario o contraseña incorrectos.</string>
     <string name="addStand">Puesto agregado exitosamente.</string>
+    <string name="modifyProfile">Usuario modificado exitosamente.</string>
 
     <!--Titles -->
     <string name="fragmentAdd">Agregar Puesto</string>

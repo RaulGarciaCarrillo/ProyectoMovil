@@ -67,6 +67,7 @@
     <string name="favoriteDelete">Delete from favorites.</string>
     <string name="toastLogin">User or password was invalid.</string>
     <string name="addStand">Stand added successful.</string>
+    <string name="modifyProfile">User modify successful.</string>
     <!--Toast-->
 
     <!--Titles -->

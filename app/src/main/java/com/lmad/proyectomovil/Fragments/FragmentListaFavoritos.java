@@ -37,8 +37,8 @@ public class FragmentListaFavoritos extends Fragment {
 
         lstFavoritos = (ListView) rootView.findViewById(R.id.lstFavoritos);
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
-        int IdUsuario = dataSource.getUsuario();
-        new Networking(rootView.getContext()).execute("cargarFavoritos", 1, new MyCallback() {
+        idUsuario = dataSource.getUsuario();
+        new Networking(rootView.getContext()).execute("cargarFavoritos", idUsuario, new MyCallback() {
             @Override
             public void onWorkFinish(Object data) {
                 final List<Puesto> puestoList = (List<Puesto>) data;
