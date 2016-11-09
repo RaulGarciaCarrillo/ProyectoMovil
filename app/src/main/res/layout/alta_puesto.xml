@@ -166,7 +166,7 @@
 
             <ImageView
                 android:id="@+id/imgPhotoStand"
-                android:src="@android:mipmap/sym_def_app_icon"
+                android:src="@mipmap/logo"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:layout_below="@+id/tvPhotoStand"
                 android:layout_centerHorizontal="true"
