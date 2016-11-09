@@ -143,14 +143,16 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
         ArrayList<Prediction> predictions = libreria.recognize(gesture);
         if (predictions.size() > 0 && predictions.get(0).score > 1) {
-            String action = predictions.get(0).name;
-            Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+            final String action = predictions.get(0).name;
+
 
             if(action.equals("favorito") ){
                 changeFragment(new FragmentListaFavoritos(), "favoritos");
+                Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
             }
             if(action.equals("perfil")){
                 changeFragment(new FragmentPerfil(), "perfil");
+                Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
             }
             if(action.equals("logout")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         changeFragment(new FragmentLogin(),"login");
+                        Toast.makeText(getApplicationContext(), action, Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

@@ -75,12 +75,15 @@ public class FragmentPerfil extends Fragment {
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
         usuarioLogeado.setId(dataSource.getUsuario());
 
+
+        final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
+        final int lang = prefs.getInt("lang", 0);
+        spinnerLenguaje.setSelection(lang);
+
         spinnerLenguaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String len= spinnerLenguaje.getSelectedItem().toString();
-                SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
-                final int lang = prefs.getInt("lang", 0);
                 // Cambia el idioma de la app
                 String lenguaje = "";
                 //if( lang == 1){

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class FragmentLogin extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setRetainInstance(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
     }
 
@@ -77,7 +79,7 @@ public class FragmentLogin extends Fragment {
                                         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
                                         dataSource.insertUsuario(idUsuario);
                                         Integer i = dataSource.getUsuario();
-                                        Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -115,7 +117,13 @@ public class FragmentLogin extends Fragment {
         setRetainInstance(true);
     }
 
-   /* private void loginopi (){
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+    }
+
+    /* private void loginopi (){
         new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(),editPassword.getText().toString(), new MyCallback() {
             @Override
             public void onWorkFinish(final Object data) {
