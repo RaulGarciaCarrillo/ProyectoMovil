@@ -55,7 +55,7 @@ public class FragmentRegistro extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.registro, container, false);
 
-        getActivity().setTitle(getResources().getString(R.string.fragmentRegister));
+        getActivity().setTitle(getResources().getString((R.string.fragmentRegister)));
 
         btnCancel = (Button) rootView.findViewById(R.id.btnCancel);
         btnSignIn = (Button) rootView.findViewById(R.id.btnSignIn);

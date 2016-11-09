@@ -53,6 +53,9 @@ public class FragmentPerfil extends Fragment {
     ImageView imgProfilePicture;
     Button btnProfileEdit;
 
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     View rootView;
 
     @Nullable
@@ -71,32 +74,41 @@ public class FragmentPerfil extends Fragment {
         usuarioLogeado = new Usuario();
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
         usuarioLogeado.setId(dataSource.getUsuario());
-        
+
+
         final SharedPreferences prefs = getActivity().getSharedPreferences("AppLanguaje", Context.MODE_PRIVATE);
-        int languaje = prefs.getInt("languaje", 0);
-        spinnerLenguaje.setSelection(languaje);
+        final int lang = prefs.getInt("lang", 0);
+        spinnerLenguaje.setSelection(lang);
+
         spinnerLenguaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String len= spinnerLenguaje.getSelectedItem().toString();
-                String SelectLenguaje="";
+                // Cambia el idioma de la app
+                String lenguaje = "";
+                //if( lang == 1){
+                  //  lenguaje = "en";
+                //}
 
                 if (len.equals("Español")){
-                    SelectLenguaje="es";
+                    lenguaje = "es";
                 } else {
-                    SelectLenguaje="en";
+                    lenguaje = "en";
                 }
 
-                Locale loc = new Locale(SelectLenguaje);
+                Locale loc = new Locale(lenguaje);
                 Locale.setDefault(loc);
 
-                Configuration configuration = new Configuration();
-                configuration.locale = loc;
+                Configuration config = new Configuration();
+                config.locale = loc;
 
                 DisplayMetrics metrics = getActivity().getBaseContext().getResources().getDisplayMetrics();
-                getActivity().getBaseContext().getResources().updateConfiguration(configuration,metrics);
-                
-                prefs.edit().putInt("lenguaje", position).commit();
+                getActivity().getBaseContext().getResources().updateConfiguration(config, metrics);
+
+                prefs.edit().putInt("lang", position).commit();
+
+                drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                navigationView = (NavigationView) getActivity().findViewById(R.id.nav_viewer);
                 
                 //changeFragment(new FragmentPerfil(),len);
             }

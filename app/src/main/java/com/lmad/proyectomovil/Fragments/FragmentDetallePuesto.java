@@ -17,6 +17,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -410,6 +411,36 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
             return null;
         }
         return new LatLng(bestLocation.getLatitude(), bestLocation.getLongitude());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(puesto.getIdTipoComida());
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void changeFragment(Fragment fragment, String tag) {
+        FragmentManager fm = getFragmentManager();
+
+        FragmentTransaction ft= fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
+
+        //ft.addToBackStack(null); //no regresar al último fragmento
+        ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
+
+        ft.commit();//cerrar conexión
     }
 
 }

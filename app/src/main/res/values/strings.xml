@@ -46,8 +46,8 @@
     <string name="profile_Password_Example">12</string>
     <string name="profile_Languaje">Languaje</string>
     <string-array name="profile_Languajes">
-        <item>English</item>
         <item>Español</item>
+        <item>English</item>
     </string-array>
     <string name="profile_btnEdit">Edit</string>
 
@@ -68,6 +68,8 @@
     <string name="toastLogin">User or password was invalid.</string>
     <string name="addStand">Stand added successful.</string>
     <string name="modifyProfile">User modify successful.</string>
+    <string name="toast_noInternet">No internet connection</string>
+    <string name="toast_noInternetAddPuesto">No internet connection, when the connection is available, the stand will be available</string>
     <!--Toast-->
 
     <!--Titles -->
