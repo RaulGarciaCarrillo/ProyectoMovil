@@ -68,6 +68,8 @@
     <string name="toastLogin">User or password was invalid.</string>
     <string name="addStand">Stand added successful.</string>
     <string name="modifyProfile">User modify successful.</string>
+    <string name="toast_noInternet">No internet connection</string>
+    <string name="toast_noInternetAddPuesto">No internet connection, when the connection is available, the stand will be available</string>
     <!--Toast-->
 
     <!--Titles -->

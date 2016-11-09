@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
@@ -23,19 +24,21 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Usuario"
             android:id="@+id/tvComment_User"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:textSize="18sp"
-            android:background="@color/com_facebook_button_background_color_disabled" />
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif" />
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Buenos tacos"
                 android:id="@+id/tvComment"
                 android:layout_weight="2"
                 android:layout_gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

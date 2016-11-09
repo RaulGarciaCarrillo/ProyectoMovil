@@ -13,6 +13,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -254,26 +256,31 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
                     UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
                     puesto.setIdUsuario(dataSource.getUsuario());
 
-                    new Networking(rootView.getContext()).execute("agregarPuesto", puesto);
+                    if(isNetworkAvailable()) {
+                        new Networking(rootView.getContext()).execute("agregarPuesto", puesto);
+                        if (checkedBuffet == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 1);
+                        if (checkedChinese == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 2);
+                        if (checkedHamburger == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 3);
+                        if (checkedHotDog == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 4);
+                        if (checkedPizza == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 5);
+                        if (checkedSnack == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 6);
+                        if (checkedTacos == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 7);
+                        if (checkedOthers == true)
+                            new Networking(rootView.getContext()).execute("agregarPuestoComida", 8);
 
-                    if(checkedBuffet==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 1);
-                    if(checkedChinese==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 2);
-                    if(checkedHamburger==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 3);
-                    if(checkedHotDog==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 4);
-                    if(checkedPizza==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 5);
-                    if(checkedSnack==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 6);
-                    if(checkedTacos==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 7);
-                    if(checkedOthers==true)
-                        new Networking(rootView.getContext()).execute("agregarPuestoComida", 8);
 
-                    Toast.makeText(getContext(), getResources().getString(R.string.addStand), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.addStand), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternetAddPuesto), Toast.LENGTH_LONG).show();
+                    }
+
                     changeFragment(new FragmentMenuPrincipal(), "inicio");
                 }
             }
@@ -295,6 +302,13 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
                 Toast.makeText(getContext(), "Problema al regresar de la cámara", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    // Metodo util para saber si hay conectividad o no.
+    boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected() && networkInfo.isAvailable();
     }
 
     public static String encodeToBase64(Bitmap image) {

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -70,82 +71,134 @@ public class FragmentMenuPrincipal extends Fragment {
         imgBuffet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(1);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(1);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgChina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(2);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(2);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgHamburguesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(3);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                    if(isNetworkAvailable()) {
+                        FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                        fragmentListaPuesto.setIdTipoComida(3);
+                        changeFragment(fragmentListaPuesto, "listaPuesto");
+                    }else {
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                    }
             }
         });
 
         imgHotdog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(4);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(4);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgPizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(5);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(5);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(6);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(6);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgTacos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(7);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(7);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imgOtros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
-                fragmentListaPuesto.setIdTipoComida(8);
-                changeFragment(fragmentListaPuesto, "listaPuesto");
+                if(isNetworkAvailable()) {
+                    FragmentListaPuesto fragmentListaPuesto = new FragmentListaPuesto();
+                    fragmentListaPuesto.setIdTipoComida(8);
+                    changeFragment(fragmentListaPuesto, "listaPuesto");
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+
+
         return rootView;
     }
+
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_inicio, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -182,5 +235,7 @@ public class FragmentMenuPrincipal extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
     }
+
+
 
 }
