@@ -1,5 +1,8 @@
 package com.lmad.proyectomovil.Fragments;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -59,32 +62,35 @@ public class FragmentLogin extends Fragment {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editUser.getText().toString().equals("") || editPassword.getText().toString().equals("")) {
-                    Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else {
-                    new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(), editPassword.getText().toString(), new MyCallback() {
-                        @Override
-                        public void onWorkFinish(Object data) {
-                            final Integer idUsuario = (Integer) data;
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (idUsuario == 0) {
-                                        Toast.makeText(getContext(), getResources().getString(R.string.toastLogin), Toast.LENGTH_SHORT).show();
-                                        return;
-                                    } else {
-                                        changeFragment(new FragmentMenuPrincipal(), "inicio");
-                                        UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
-                                        dataSource.insertUsuario(idUsuario);
-                                        Integer i = dataSource.getUsuario();
-                                        //Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
+                if(isNetworkAvailable()) {
+                    if (editUser.getText().toString().equals("") || editPassword.getText().toString().equals("")) {
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(), editPassword.getText().toString(), new MyCallback() {
+                            @Override
+                            public void onWorkFinish(Object data) {
+                                final Integer idUsuario = (Integer) data;
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (idUsuario == 0) {
+                                            Toast.makeText(getContext(), getResources().getString(R.string.toastLogin), Toast.LENGTH_SHORT).show();
+                                            return;
+                                        } else {
+                                            changeFragment(new FragmentMenuPrincipal(), "inicio");
+                                            UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                                            dataSource.insertUsuario(idUsuario);
+                                            Integer i = dataSource.getUsuario();
+                                            //Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    });
+                                });
+                            }
+                        });
+                    }
+                }else{
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -93,7 +99,11 @@ public class FragmentLogin extends Fragment {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeFragment(new FragmentRegistro(), "registro");
+                if(isNetworkAvailable()) {
+                    changeFragment(new FragmentRegistro(), "registro");
+                }else{
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -123,6 +133,12 @@ public class FragmentLogin extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
+    // Metodo util para saber si hay conectividad o no.
+    boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected() && networkInfo.isAvailable();
+    }
     /* private void loginopi (){
         new Networking(rootView.getContext()).execute("validacionUsuario", editUser.getText().toString(),editPassword.getText().toString(), new MyCallback() {
             @Override

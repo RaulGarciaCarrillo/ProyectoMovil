@@ -30,7 +30,7 @@
     <string name="detail_Comment">Comentarios</string>
     <string name="detail_Location">Ubicación</string>
 
-    <string name="login_User">Usuario</string>
+    <string name="login_User">Correo</string>
     <string name="login_Password">Contraseña</string>
     <string name="login_btnLogin">Inicia Sesión</string>
     <string name="login_or">O</string>

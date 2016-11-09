@@ -29,7 +29,7 @@
     <string name="detail_Comment">Comments</string>
     <string name="detail_Location">Location</string>
 
-    <string name="login_User">User</string>
+    <string name="login_User">Email</string>
     <string name="login_Password">Password</string>
     <string name="login_btnLogin">Log In</string>
     <string name="login_or">Or</string>

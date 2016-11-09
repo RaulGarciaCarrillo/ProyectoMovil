@@ -148,11 +148,11 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
 
             if(action.equals("favorito") ){
                 changeFragment(new FragmentListaFavoritos(), "favoritos");
-                Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
             }
             if(action.equals("perfil")){
                 changeFragment(new FragmentPerfil(), "perfil");
-                Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
             }
             if(action.equals("logout")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         changeFragment(new FragmentLogin(),"login");
-                        Toast.makeText(getApplicationContext(), action, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), action, Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

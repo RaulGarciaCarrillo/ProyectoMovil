@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,13 +70,26 @@ public class FragmentListaFavoritos extends Fragment {
 
     private void changeFragment(Fragment fragment, String tag) {
         FragmentManager fm = getFragmentManager();
-
         FragmentTransaction ft= fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
-
-        //ft.addToBackStack(null); //no regresar al último fragmento
         ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
-
         ft.commit();//cerrar conexión
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    changeFragment(new FragmentMenuPrincipal(), "inicio");
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void setIdUsuario(Integer idUsuario) {
