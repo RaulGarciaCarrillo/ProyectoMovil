@@ -45,6 +45,8 @@ public class FragmentLogin extends Fragment {
 
         ((DrawerLocker)getActivity()).setDrawerEnable(false);  //bloquear navigation drawer
 
+        getActivity().setTitle(getResources().getString((R.string.fragmentLogin)));
+
         btnLogIn = (Button) rootView.findViewById(R.id.btnLogin);
         btnRegister = (Button) rootView.findViewById(R.id.btnRegister);
         editUser = (EditText) rootView.findViewById(R.id.editUser);

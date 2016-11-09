@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
     private CharSequence mTitle;
     private GestureLibrary libreria;
     NavigationView navigationView;
-    Spinner spinnerLenguaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
