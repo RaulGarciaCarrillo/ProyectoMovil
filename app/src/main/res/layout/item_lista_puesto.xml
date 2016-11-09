@@ -3,14 +3,16 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="10dp"
+    android:padding="10dp">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/imgStandPicture"
             android:src="@mipmap/ic_launcher"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
         <LinearLayout
             android:orientation="vertical"

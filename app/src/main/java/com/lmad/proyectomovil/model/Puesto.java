@@ -15,6 +15,8 @@ public class Puesto {
     String coordenadas;
     String foto;
 
+    int idTipoComida;
+
 
     public int getId() {
         return id;
@@ -70,5 +72,13 @@ public class Puesto {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getIdTipoComida() {
+        return idTipoComida;
+    }
+
+    public void setIdTipoComida(int idTipoComida) {
+        this.idTipoComida = idTipoComida;
     }
 }
