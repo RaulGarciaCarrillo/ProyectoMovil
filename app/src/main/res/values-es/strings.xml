@@ -80,6 +80,7 @@
     <string name="fragmentRegister">Regístrate</string>
     <string name="toast_noInternet">No hay conexion a internet</string>
     <string name="toast_noInternetAddPuesto">No hay conexion a internet, cuando la conexion este disponible, el puesto estara dado de alta</string>
+    <string name="tv_noResultados">No se encontraron puestos</string>
 
 
 </resources>

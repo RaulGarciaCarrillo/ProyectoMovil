@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
@@ -28,6 +29,9 @@ import java.util.List;
 public class FragmentListaFavoritos extends Fragment {
     Integer idUsuario;
     ListView lstFavoritos;
+    TextView noResultadosFav;
+
+
 
 
     @Nullable
@@ -37,6 +41,7 @@ public class FragmentListaFavoritos extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.fragmentFavorites));
 
         lstFavoritos = (ListView) rootView.findViewById(R.id.lstFavoritos);
+        noResultadosFav = (TextView) rootView.findViewById(R.id.noResultadosFav);
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
         idUsuario = dataSource.getUsuario();
         new Networking(rootView.getContext()).execute("cargarFavoritos", idUsuario, new MyCallback() {
@@ -49,6 +54,8 @@ public class FragmentListaFavoritos extends Fragment {
                         if (puestoList.size() != 0) {
                             final PuestoAdapter puestoAdapter = new PuestoAdapter(puestoList);
                             lstFavoritos.setAdapter(puestoAdapter);
+                        }else {
+                            noResultadosFav.setText(R.string.tv_noResultados);
                         }
                     }
                 });

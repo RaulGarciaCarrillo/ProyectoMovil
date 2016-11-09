@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
@@ -29,6 +30,7 @@ public class FragmentListaPuesto extends Fragment {
 
     Integer idTipoComida;
     ListView lstPuestos;
+    TextView noResultados;
 
     @Nullable
     @Override
@@ -36,6 +38,7 @@ public class FragmentListaPuesto extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.lista_puesto, container, false);
         lstPuestos = (ListView) rootView.findViewById(R.id.lstPuestos);
+        noResultados = (TextView) rootView.findViewById(R.id.noResultados);
 
         String nombreCategoria = "";
 
@@ -78,6 +81,8 @@ public class FragmentListaPuesto extends Fragment {
                         if (puestoList.size() != 0) {
                             final PuestoAdapter puestoAdapter = new PuestoAdapter(puestoList);
                             lstPuestos.setAdapter(puestoAdapter);
+                        }else {
+                            noResultados.setText(R.string.tv_noResultados);
                         }
                     }
                 });
