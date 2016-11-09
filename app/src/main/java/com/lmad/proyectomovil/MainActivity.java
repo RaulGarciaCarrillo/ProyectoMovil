@@ -1,5 +1,6 @@
 package com.lmad.proyectomovil;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -16,6 +17,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -144,7 +146,36 @@ public class MainActivity extends AppCompatActivity implements DrawerLocker, Ges
         if (predictions.size() > 0 && predictions.get(0).score > 1) {
             String action = predictions.get(0).name;
             Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
+
+            if(action.equals("favorito") ){
+                changeFragment(new FragmentListaFavoritos(), "favoritos");
+            }
+            if(action.equals("perfil")){
+                changeFragment(new FragmentPerfil(), "perfil");
+            }
+            if(action.equals("logout")){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("¿Estas seguro que quieres cerrar sesion?");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        changeFragment(new FragmentLogin(),"login");
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                //changeFragment(new FragmentLogin(),"login");
+            }
         }
+
+
+
     }
 
     @Override
