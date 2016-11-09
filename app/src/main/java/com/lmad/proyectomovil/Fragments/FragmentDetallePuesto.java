@@ -31,6 +31,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.FacebookActivity;
+import com.facebook.login.LoginManager;
+import com.facebook.share.ShareApi;
 import com.facebook.share.internal.ShareFeedContent;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
@@ -57,6 +60,8 @@ import com.lmad.proyectomovil.networking.Networking;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -181,6 +186,20 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
 
+               /* LoginManager.getInstance().logInWithPublishPermissions(
+                        fragmentOrActivity,
+                        Arrays.asList("publish_actions")); */
+
+                        //Aqui esto lo agregue
+                LoginManager.getInstance().logInWithPublishPermissions(
+                        FragmentDetallePuesto.this,
+                        Arrays.asList( "publish_actions" )
+
+                );
+                        // Fin
+
+
+
                 String msg = puesto.getNombre() + " " + puesto.getDescripcion() + " ubicados en " + puesto.getDireccion();
 
                 SharePhoto sharePhoto = new SharePhoto.Builder().setBitmap(decodeBase64(puesto.getFoto())).setCaption(msg).build();
@@ -192,7 +211,10 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
                         .setContentDescription(puesto.getDescripcion() + "ubicados en " + puesto.getDescripcion())
 
                         .build();*/
-                ShareDialog.show(getActivity(), content);
+
+
+                 ShareDialog.show(getActivity(), content);
+
             }
         });
 
