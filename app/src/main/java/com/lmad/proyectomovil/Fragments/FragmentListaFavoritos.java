@@ -5,11 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.PuestoAdapter;
@@ -27,6 +29,9 @@ import java.util.List;
 public class FragmentListaFavoritos extends Fragment {
     Integer idUsuario;
     ListView lstFavoritos;
+    TextView noResultadosFav;
+
+
 
 
     @Nullable
@@ -36,6 +41,7 @@ public class FragmentListaFavoritos extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.fragmentFavorites));
 
         lstFavoritos = (ListView) rootView.findViewById(R.id.lstFavoritos);
+        noResultadosFav = (TextView) rootView.findViewById(R.id.noResultadosFav);
         UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
         idUsuario = dataSource.getUsuario();
         new Networking(rootView.getContext()).execute("cargarFavoritos", idUsuario, new MyCallback() {
@@ -48,6 +54,8 @@ public class FragmentListaFavoritos extends Fragment {
                         if (puestoList.size() != 0) {
                             final PuestoAdapter puestoAdapter = new PuestoAdapter(puestoList);
                             lstFavoritos.setAdapter(puestoAdapter);
+                        }else {
+                            noResultadosFav.setText(R.string.tv_noResultados);
                         }
                     }
                 });
@@ -69,13 +77,26 @@ public class FragmentListaFavoritos extends Fragment {
 
     private void changeFragment(Fragment fragment, String tag) {
         FragmentManager fm = getFragmentManager();
-
         FragmentTransaction ft= fm.beginTransaction(); //abrir una transicion (agregar, quitar o reemplazar)
-
-        //ft.addToBackStack(null); //no regresar al último fragmento
         ft.replace(R.id.frame_container, fragment, tag); //(id, fragmento)
-
         ft.commit();//cerrar conexión
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    changeFragment(new FragmentMenuPrincipal(), "inicio");
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void setIdUsuario(Integer idUsuario) {

@@ -29,7 +29,7 @@
     <string name="detail_Comment">Comments</string>
     <string name="detail_Location">Location</string>
 
-    <string name="login_User">User</string>
+    <string name="login_User">Email</string>
     <string name="login_Password">Password</string>
     <string name="login_btnLogin">Log In</string>
     <string name="login_or">Or</string>
@@ -58,6 +58,8 @@
     <string name="register_ProfilePicture">Profile Picture</string>
     <string name="register_btnCancel">Cancel</string>
     <string name="register_btnSignIn">Sign In</string>
+
+    <string name="tv_noResultados">No stands found</string>
 
     <!--Toast-->
     <string name="toast_Fragment">Already open!</string>

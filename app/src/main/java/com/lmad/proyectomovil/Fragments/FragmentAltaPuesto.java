@@ -24,6 +24,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
         getActivity().setTitle(getResources().getString((R.string.fragmentAdd)));
 
         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        checkLocationPermission();
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
@@ -278,7 +280,7 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
 
                         Toast.makeText(getContext(), getResources().getString(R.string.addStand), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternetAddPuesto), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_LONG).show();
                     }
 
                     changeFragment(new FragmentMenuPrincipal(), "inicio");
@@ -289,6 +291,23 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
         return rootView;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    changeFragment(new FragmentMenuPrincipal(), "inicio");
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) { //cuando ya regresemos de la camara
@@ -337,7 +356,6 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        checkLocationPermission();
         // Instaciammos nuestor objeto mapa
         map = googleMap;
 

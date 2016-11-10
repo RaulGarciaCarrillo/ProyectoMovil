@@ -30,7 +30,7 @@
     <string name="detail_Comment">Comentarios</string>
     <string name="detail_Location">Ubicación</string>
 
-    <string name="login_User">Usuario</string>
+    <string name="login_User">Correo</string>
     <string name="login_Password">Contraseña</string>
     <string name="login_btnLogin">Inicia Sesión</string>
     <string name="login_or">O</string>
@@ -80,6 +80,7 @@
     <string name="fragmentRegister">Regístrate</string>
     <string name="toast_noInternet">No hay conexion a internet</string>
     <string name="toast_noInternetAddPuesto">No hay conexion a internet, cuando la conexion este disponible, el puesto estara dado de alta</string>
+    <string name="tv_noResultados">No se encontraron puestos</string>
 
 
 </resources>

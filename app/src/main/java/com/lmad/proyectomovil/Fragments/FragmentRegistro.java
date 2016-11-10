@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -16,6 +18,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Base64;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +31,7 @@ import com.lmad.proyectomovil.DrawerLocker;
 import com.lmad.proyectomovil.MainActivity;
 import com.lmad.proyectomovil.R;
 import com.lmad.proyectomovil.adapter.ComentarioAdapter;
+import com.lmad.proyectomovil.database.UsuarioDataSource;
 import com.lmad.proyectomovil.model.Comentario;
 import com.lmad.proyectomovil.model.MyCallback;
 import com.lmad.proyectomovil.model.Usuario;
@@ -91,38 +95,64 @@ public class FragmentRegistro extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(isNetworkAvailable()) {
 
-                if(editPassword.getText().toString().equals(editConfirmPassword.getText().toString())) {
-                    if(editPassword.getText().toString().equals("") ||
-                        editConfirmPassword.getText().toString().equals("") ||
-                        editUser.getText().toString().equals("") ||
-                        editUserName.getText().toString().equals("")) {
+                    if (editPassword.getText().toString().equals(editConfirmPassword.getText().toString())) {
+                        if (editPassword.getText().toString().equals("") ||
+                                editConfirmPassword.getText().toString().equals("") ||
+                                editUser.getText().toString().equals("") ||
+                                editUserName.getText().toString().equals("")) {
                             Toast.makeText(getContext(), getResources().getString(R.string.toast_faltan_campos), Toast.LENGTH_SHORT).show();
                             return;
+                        } else {
+                            Usuario usuario = new Usuario();
+                            Bitmap foto = ((BitmapDrawable) imgRegisterPicture.getDrawable()).getBitmap();
+                            String fotoBase64 = encodeToBase64(foto);
+                            usuario.setFoto(fotoBase64);
+                            usuario.setApodo(editUserName.getText().toString());
+                            usuario.setContrasenia(editPassword.getText().toString());
+                            usuario.setCorreo(editUser.getText().toString());
+
+                            new Networking(v.getContext()).execute("agregarUsuario", usuario, new MyCallback() {
+                                @Override
+                                public void onWorkFinish(Object data) {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                        }
+                                    });
+                                }
+                            });
+
+                            new Networking(v.getContext()).execute("validacionUsuario", editUser.getText().toString(), editPassword.getText().toString(), new MyCallback() {
+                                @Override
+                                public void onWorkFinish(Object data) {
+                                    final Integer idUsuario = (Integer) data;
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (idUsuario == 0) {
+                                                Toast.makeText(getContext(), getResources().getString(R.string.toastLogin), Toast.LENGTH_SHORT).show();
+                                                return;
+                                            } else {
+                                                changeFragment(new FragmentMenuPrincipal(), "inicio");
+                                                UsuarioDataSource dataSource = new UsuarioDataSource(getContext());
+                                                dataSource.insertUsuario(idUsuario);
+                                                Integer i = dataSource.getUsuario();
+                                                //Toast.makeText(getContext(), i.toString(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                           // changeFragment(new FragmentMenuPrincipal(), "inicio");
+                        }
                     } else {
-                        Usuario usuario = new Usuario();
-                        Bitmap foto = ((BitmapDrawable) imgRegisterPicture.getDrawable()).getBitmap();
-                        String fotoBase64 = encodeToBase64(foto);
-                        usuario.setFoto(fotoBase64);
-                        usuario.setApodo(editUserName.getText().toString());
-                        usuario.setContrasenia(editPassword.getText().toString());
-                        usuario.setCorreo(editUser.getText().toString());
-
-                        new Networking(v.getContext()).execute("agregarUsuario", usuario, new MyCallback() {
-                            @Override
-                            public void onWorkFinish(Object data) {
-                                getActivity().runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                    }
-                                });
-                            }
-                        });
-                        changeFragment(new FragmentMenuPrincipal(), "inicio");
+                        Toast.makeText(getContext(), getResources().getString(R.string.toast_contrasenia), Toast.LENGTH_SHORT).show();
                     }
-                } else{
-                    Toast.makeText(getContext(), getResources().getString(R.string.toast_contrasenia), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.toast_noInternet), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -167,5 +197,29 @@ public class FragmentRegistro extends Fragment {
     {
         byte[] decodedBytes = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    changeFragment(new FragmentLogin(), "login");
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    // Metodo util para saber si hay conectividad o no.
+    boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected() && networkInfo.isAvailable();
     }
 }
