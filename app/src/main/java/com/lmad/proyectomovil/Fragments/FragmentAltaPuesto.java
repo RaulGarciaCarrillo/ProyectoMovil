@@ -86,6 +86,7 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
         getActivity().setTitle(getResources().getString((R.string.fragmentAdd)));
 
         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        checkLocationPermission();
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
@@ -355,7 +356,6 @@ public class FragmentAltaPuesto extends Fragment  implements OnMapReadyCallback{
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        checkLocationPermission();
         // Instaciammos nuestor objeto mapa
         map = googleMap;
 
