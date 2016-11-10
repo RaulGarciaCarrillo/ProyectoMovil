@@ -191,13 +191,6 @@ public class FragmentDetallePuesto extends Fragment implements OnMapReadyCallbac
                         fragmentOrActivity,
                         Arrays.asList("publish_actions")); */
 
-                        //Aqui esto lo agregue
-                LoginManager.getInstance().logInWithPublishPermissions(
-                        FragmentDetallePuesto.this,
-                        Arrays.asList( "publish_actions" )
-
-                );
-                        // Fin
 
 
 
